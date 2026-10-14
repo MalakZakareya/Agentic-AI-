@@ -870,6 +870,37 @@ def retrieve_draft_legal_requirements(
         )
     )
 
+
+    # Internal LangGraph research for draft legal topics.
+    # Preserve the existing requirements and their format.
+    from core_agents.graph import build_graph
+
+    draft_legal_research_agent = build_graph()
+
+    for topic in legal_topics:
+        topic_queries = [
+            str(q).strip()
+            for q in topic.get("search_queries", [])
+            if str(q).strip()
+        ]
+
+        if not topic_queries:
+            continue
+
+        agent_result = draft_legal_research_agent.invoke({
+            "query": topic_queries[0],
+            "search_attempts": 0,
+        })
+
+        topic_key = str(topic["key"]).strip()
+
+        for requirement in retrieved_requirements:
+            if str(requirement.get("legal_topic", "")).strip() == topic_key:
+                requirement["legal_research_agent"] = {
+                    "decision": agent_result.get("decision"),
+                    "evidence_status": agent_result.get("evidence_status"),
+                }
+
     return retrieved_requirements
 
 

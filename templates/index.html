@@ -2583,10 +2583,10 @@ footer {
     gap: 12px;
 }
     </style>
-
+<link rel="stylesheet" href="/static/css/futuristic.css">
 </head>
 <body>
-
+<div id="ai-3d-background" aria-hidden="true"></div>
 <div class="page">
 
     <!-- NAVBAR -->
@@ -3982,7 +3982,7 @@ footer {
                 item.point || {};
 
             const comparison =
-                item.comparison || {};
+                item.legal_analysis || item.comparison || {};
 
             const status =
                 String(
@@ -6229,5 +6229,6 @@ footer {
 
 }
 </script>
+<script src="/static/js/three-scene.js"></script>
 </body>
 </html>

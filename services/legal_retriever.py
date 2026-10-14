@@ -140,6 +140,14 @@ LEGAL_CONCEPTS: dict[str, list[str]] = {
         "الراحة",
     ],
 
+    "letter_of_credit": [
+        "letter of credit",
+        "documentary credit",
+        "documentary letter of credit",
+        "\u0627\u0644\u0627\u0639\u062a\u0645\u0627\u062f \u0627\u0644\u0645\u0633\u062a\u0646\u062f\u064a",
+        "\u0627\u0639\u062a\u0645\u0627\u062f \u0645\u0633\u062a\u0646\u062f\u064a",
+    ],
+
     "annual_leave": [
         "annual leave",
         "paid leave",
@@ -329,53 +337,90 @@ LEGAL_CONCEPTS: dict[str, list[str]] = {
         "واجبات",
         "مسؤوليات",
     ],
+
+    "public_holidays": [
+        "public holiday",
+        "public holidays",
+        "official holiday",
+        "official holidays",
+        "\u0627\u0644\u0639\u0637\u0644\u0627\u062a \u0627\u0644\u0631\u0633\u0645\u064a\u0629",
+        "\u0627\u0644\u0639\u0637\u0644 \u0627\u0644\u0631\u0633\u0645\u064a\u0629",
+        "\u0623\u064a\u0627\u0645 \u0627\u0644\u0639\u0637\u0644",
+    ],
 }
+
+
 
 
 def load_regulations() -> list[dict[str, Any]]:
     """
-    Load Bahrain regulations from the local
-    trusted knowledge base.
+    Load Bahrain regulations from the original file
+    and additional law files inside knowledge/bahrain/laws.
     """
+
+    laws_folder = REGULATIONS_FILE.parent / "laws"
 
     if not REGULATIONS_FILE.exists():
         raise FileNotFoundError(
-            "Bahrain regulations knowledge base "
-            "was not found."
+            "Bahrain regulations knowledge base was not found."
         )
 
-    with open(
-        REGULATIONS_FILE,
-        "r",
-        encoding="utf-8",
-    ) as file:
-        raw_data: Any = json.load(file)
+    files_to_load: list[Path] = [REGULATIONS_FILE]
 
-    if not isinstance(raw_data, dict):
-        raise ValueError(
-            "Invalid regulations knowledge base."
+    if laws_folder.exists():
+        files_to_load.extend(
+            sorted(laws_folder.glob("*.json"))
         )
 
-    data = cast(
-        dict[str, Any],
-        raw_data,
-    )
+    all_regulations: list[dict[str, Any]] = []
+    seen_ids: set[str] = set()
 
-    raw_regulations: Any = data.get(
-        "regulations",
-        [],
-    )
+    for file_path in files_to_load:
+        with open(file_path, "r", encoding="utf-8") as file:
+            raw_data: Any = json.load(file)
 
-    if not isinstance(
-        raw_regulations,
-        list,
-    ):
-        return []
+        if not isinstance(raw_data, dict):
+            raise ValueError(
+                f"Invalid regulations file: {file_path.name}"
+            )
 
-    return cast(
-        list[dict[str, Any]],
-        raw_regulations,
-    )
+        data = cast(dict[str, Any], raw_data)
+        raw_regulations: Any = data.get("regulations", [])
+
+        if not isinstance(raw_regulations, list):
+            raise ValueError(
+                f"Invalid regulations list: {file_path.name}"
+            )
+
+        regulations = cast(list[Any], raw_regulations)
+
+        for raw_regulation in regulations:
+            if not isinstance(raw_regulation, dict):
+                raise ValueError(
+                    f"Invalid regulation in {file_path.name}"
+                )
+
+            regulation = cast(dict[str, Any], raw_regulation)
+
+            regulation_id = str(
+                regulation.get("id", "")
+            ).strip()
+
+            if not regulation_id:
+                raise ValueError(
+                    f"Missing regulation ID in {file_path.name}"
+                )
+
+            if regulation_id in seen_ids:
+                raise ValueError(
+                    f"Duplicate regulation ID: {regulation_id}"
+                )
+
+            seen_ids.add(regulation_id)
+            all_regulations.append(regulation)
+
+    return all_regulations
+
 
 
 def normalize_text(
@@ -552,41 +597,56 @@ def get_query_phrases(
     return phrases
 
 
-def detect_legal_concepts(
-    query: str,
-) -> list[str]:
-    """
-    Detect legal concepts from either
-    Arabic or English queries.
-    """
 
-    normalized_query = normalize_text(
-        query
+def detect_legal_concepts(query: str) -> list[str]:
+    """Detect legal concepts with explicit holiday disambiguation."""
+    normalized_query = normalize_text(query)
+
+    public_phrases = (
+        "public holiday",
+        "public holidays",
+        "official holiday",
+        "official holidays",
+        "\u0627\u0644\u0639\u0637\u0644\u0627\u062a \u0627\u0644\u0631\u0633\u0645\u064a\u0629",
     )
 
-    detected: list[str] = []
+    annual_phrases = (
+        "annual leave",
+        "annual holiday",
+        "paid annual leave",
+        "\u0625\u062c\u0627\u0632\u0629 \u0633\u0646\u0648\u064a\u0629",
+        "\u0627\u0644\u0625\u062c\u0627\u0632\u0629 \u0627\u0644\u0633\u0646\u0648\u064a\u0629",
+    )
 
-    for concept, terms in (
-        LEGAL_CONCEPTS.items()
-    ):
+    is_public = any(
+        phrase in normalized_query
+        for phrase in public_phrases
+    )
+
+    is_annual = any(
+        phrase in normalized_query
+        for phrase in annual_phrases
+    )
+
+    detected = []
+
+    for concept, terms in LEGAL_CONCEPTS.items():
+        if concept == "annual_leave" and is_public and not is_annual:
+            continue
 
         for term in terms:
+            normalized_term = normalize_text(term)
 
-            normalized_term = normalize_text(
-                term
-            )
-
-            if (
-                normalized_term
-                and normalized_term
-                in normalized_query
-            ):
-                detected.append(
-                    concept
-                )
+            if normalized_term and normalized_term in normalized_query:
+                detected.append(concept)
                 break
 
+    if is_public and "public_holidays" not in detected:
+        detected.append("public_holidays")
+
     return detected
+
+
 
 
 def get_expanded_terms(

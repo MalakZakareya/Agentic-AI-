@@ -7,6 +7,7 @@ from api.v1 import upload
 from api.v1 import analysis
 from api.v1 import design_analysis
 from api.v1 import draft
+from api.v1 import legal_research
 
 from core.config import settings
 
@@ -46,6 +47,11 @@ def create_application() -> FastAPI:
     # Draft creation endpoint
     application.include_router(
         draft.router
+    )
+
+    # Legal research endpoint
+    application.include_router(
+        legal_research.router
     )
 
     return application

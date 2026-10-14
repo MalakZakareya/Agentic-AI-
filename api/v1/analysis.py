@@ -274,6 +274,50 @@ async def analyze_document(
             flush=True,
         )
 
+
+        # Summarize legal research verification status.
+        agent_results = [
+            item.get("legal_research_agent")
+            for item in legal_retrieval
+            if isinstance(item, dict)
+        ]
+
+        agent_results = [
+            item for item in agent_results
+            if isinstance(item, dict)
+        ]
+
+        requires_review = (
+            bool(legal_retrieval)
+            and (
+                len(agent_results) != len(legal_retrieval)
+                or any(
+                    item.get("decision") != "PROCEED"
+                    or item.get("evidence_status") != "VERIFIED_CURRENT"
+                    for item in agent_results
+                )
+            )
+        )
+
+        legal_research_review = {
+            "status": (
+                "HUMAN_REVIEW"
+                if requires_review
+                else "NOT_ASSESSED"
+            ),
+            "evidence_status": (
+                "REQUIRES_VERIFICATION"
+                if requires_review
+                else "NOT_ASSESSED"
+            ),
+            "message": (
+                "Human legal review required. Legal sources "
+                "have not been confirmed as currently in force."
+                if requires_review
+                else "No current-law verification is asserted."
+            ),
+        }
+
         response = {
             "success": True,
             "message": (
@@ -294,6 +338,7 @@ async def analyze_document(
                 ],
             },
             "analysis": ai_analysis,
+            "legal_research_review": legal_research_review,
             "legal_analysis": (
                 legal_analysis
             ),

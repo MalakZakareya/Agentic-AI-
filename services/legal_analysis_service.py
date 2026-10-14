@@ -654,6 +654,7 @@ def retrieve_laws_for_point(
         ranked_candidates[:limit]
     )
 
+
     return {
         "point": point,
         "search_query": (
@@ -686,6 +687,29 @@ def retrieve_laws_for_points(
                 limit=limit_per_point,
             )
         )
+
+    if results:
+        from core_agents.graph import build_graph
+
+        combined_query = " ".join(
+            str(point.get("title", "")).strip()
+            for point in points
+            if isinstance(point, dict)
+        ).strip()
+
+        if combined_query:
+            agent_result = build_graph().invoke({
+                "query": combined_query,
+                "search_attempts": 0,
+            })
+
+            agent_review = {
+                "decision": agent_result.get("decision"),
+                "evidence_status": agent_result.get("evidence_status"),
+            }
+
+            for item in results:
+                item["legal_research_agent"] = dict(agent_review)
 
     return results
 
@@ -855,7 +879,14 @@ def build_legal_source(
                 "",
             )
         ).strip(),
+        "effective_status": str(
+            regulation.get(
+                "effective_status",
+                "unverified",
+            )
+        ).strip() or "unverified",
     }
+
 
 
 def build_legal_sources(
@@ -1217,6 +1248,33 @@ def validate_legal_analysis(
         and not relevant_articles
     ):
         status = "NOT VERIFIED"
+    unverified_articles = [
+        article
+        for article in relevant_articles
+        if (
+            source := find_trusted_legal_source(
+                ai_article=article,
+                legal_sources=legal_sources,
+            )
+        ) is not None
+        and str(
+            source.get("effective_status", "unverified")
+        ).strip().lower() != "verified_current"
+    ]
+
+    if unverified_articles:
+        status = "NOT VERIFIED"
+        explanation = (
+            "The cited Bahrain legal provisions have not "
+            "been independently verified as currently effective. "
+            + explanation
+        )
+        recommendation = (
+            "Verify the cited provisions and amendments "
+            "against the official current legislation "
+            "before relying on this assessment. "
+            + recommendation
+        )
 
     if (
         status == "NOT VERIFIED"

@@ -1,0 +1,712 @@
+{
+  "removed": [
+    {
+      "article": 16,
+      "removed_text": "2 - الشخص الاعتباري",
+      "before_length": 76,
+      "after_length": 56
+    },
+    {
+      "article": 36,
+      "removed_text": "الإيجاب :",
+      "before_length": 300,
+      "after_length": 290
+    },
+    {
+      "article": 46,
+      "removed_text": "صور خاصة في التعاقد العقد الابتدائي",
+      "before_length": 204,
+      "after_length": 168
+    },
+    {
+      "article": 49,
+      "removed_text": "الوعد بالعقد :",
+      "before_length": 304,
+      "after_length": 289
+    },
+    {
+      "article": 54,
+      "removed_text": "التعاقد بالمزايدة :",
+      "before_length": 343,
+      "after_length": 323
+    },
+    {
+      "article": 59,
+      "removed_text": "النيابة في التعاقد :",
+      "before_length": 74,
+      "after_length": 53
+    },
+    {
+      "article": 68,
+      "removed_text": "شكل العقد :",
+      "before_length": 54,
+      "after_length": 42
+    },
+    {
+      "article": 88,
+      "removed_text": "التدليس :",
+      "before_length": 82,
+      "after_length": 72
+    },
+    {
+      "article": 110,
+      "removed_text": "3 السبب :",
+      "before_length": 264,
+      "after_length": 254
+    },
+    {
+      "article": 112,
+      "removed_text": "(ثانيا) البطلان : 1 - العقد القابل للإبطال :",
+      "before_length": 306,
+      "after_length": 261
+    },
+    {
+      "article": 118,
+      "removed_text": "3 - أثر البطلان :",
+      "before_length": 210,
+      "after_length": 192
+    },
+    {
+      "article": 126,
+      "removed_text": "2 - مضمون العقد :",
+      "before_length": 256,
+      "after_length": 238
+    },
+    {
+      "article": 127,
+      "removed_text": "(ثانيا) القوة الملزمة للعقد :",
+      "before_length": 247,
+      "after_length": 217
+    },
+    {
+      "article": 132,
+      "removed_text": "(ثالثا) نسبية آثار العقد :",
+      "before_length": 343,
+      "after_length": 316
+    },
+    {
+      "article": 134,
+      "removed_text": "1 - التعهد عن الغير :",
+      "before_length": 384,
+      "after_length": 362
+    },
+    {
+      "article": 135,
+      "removed_text": "2- الاشتراط لمصلحة الغير :",
+      "before_length": 507,
+      "after_length": 480
+    },
+    {
+      "article": 144,
+      "removed_text": "(ثانيا) انفساخ العقد :",
+      "before_length": 316,
+      "after_length": 293
+    },
+    {
+      "article": 147,
+      "removed_text": "( ثالثا ) الإقالة :",
+      "before_length": 167,
+      "after_length": 147
+    },
+    {
+      "article": 149,
+      "removed_text": "( رابعا ) الدفع بعدم التنفيذ :",
+      "before_length": 122,
+      "after_length": 91
+    },
+    {
+      "article": 169,
+      "removed_text": "2- المسئولية عن عمل الغير :",
+      "before_length": 312,
+      "after_length": 284
+    },
+    {
+      "article": 174,
+      "removed_text": "3 - المسئولية عن الضرر الناجم عن الأشياء :",
+      "before_length": 318,
+      "after_length": 275
+    },
+    {
+      "article": 176,
+      "removed_text": "(ثانيا) تعويض الضرر عن العمل غير المشروع :",
+      "before_length": 455,
+      "after_length": 412
+    },
+    {
+      "article": 183,
+      "removed_text": "(أولا) تسلم غير المستحق :",
+      "before_length": 212,
+      "after_length": 186
+    },
+    {
+      "article": 205,
+      "removed_text": "( أولا ) التنفيذ العيني :",
+      "before_length": 70,
+      "after_length": 44
+    },
+    {
+      "article": 215,
+      "removed_text": "( ثانيا ) التنفيذ بطريق التعويض :",
+      "before_length": 239,
+      "after_length": 205
+    },
+    {
+      "article": 229,
+      "removed_text": "(أولا) استعمال الدائن حقوق مدينه (الدعوى غير المباشرة) :",
+      "before_length": 189,
+      "after_length": 132
+    },
+    {
+      "article": 231,
+      "removed_text": "(ثانيا) دعوى عدم نفاذ التصرفات :",
+      "before_length": 164,
+      "after_length": 131
+    },
+    {
+      "article": 239,
+      "removed_text": "(ثالثا) الحق في الحبس :",
+      "before_length": 197,
+      "after_length": 173
+    },
+    {
+      "article": 250,
+      "removed_text": "(ثانيا) الأجل :",
+      "before_length": 321,
+      "after_length": 305
+    },
+    {
+      "article": 261,
+      "removed_text": "( ثانيا ) الالتزام البدلي :",
+      "before_length": 59,
+      "after_length": 31
+    },
+    {
+      "article": 263,
+      "removed_text": "1 - التضامن بين الدائنين :",
+      "before_length": 119,
+      "after_length": 92
+    },
+    {
+      "article": 267,
+      "removed_text": "2 - التضامن بين المدينين :",
+      "before_length": 158,
+      "after_length": 131
+    },
+    {
+      "article": 283,
+      "removed_text": "( ثانيا ) عدم قابلية الالتزام للانقسام :",
+      "before_length": 140,
+      "after_length": 99
+    },
+    {
+      "article": 342,
+      "removed_text": "(ثانيا) التجديد :",
+      "before_length": 232,
+      "after_length": 214
+    },
+    {
+      "article": 349,
+      "removed_text": "(ثالثا) الإنابة في الوفاء :",
+      "before_length": 144,
+      "after_length": 116
+    },
+    {
+      "article": 352,
+      "removed_text": "( رابعاً) المقاصة :",
+      "before_length": 188,
+      "after_length": 168
+    },
+    {
+      "article": 360,
+      "removed_text": "(خامسا) اتحاد الذمة :",
+      "before_length": 170,
+      "after_length": 148
+    },
+    {
+      "article": 363,
+      "removed_text": "(ثانيا) استحالة التنفيذ :",
+      "before_length": 173,
+      "after_length": 147
+    },
+    {
+      "article": 364,
+      "removed_text": "( ثالثا) مرور الزمان المانع من سماع الدعوى :",
+      "before_length": 132,
+      "after_length": 87
+    },
+    {
+      "article": 381,
+      "removed_text": "( أولا ) أركان البيع :",
+      "before_length": 183,
+      "after_length": 160
+    },
+    {
+      "article": 388,
+      "removed_text": "( ثانيا ) آثار البيع :",
+      "before_length": 383,
+      "after_length": 360
+    },
+    {
+      "article": 392,
+      "removed_text": "1 - التزامات البائع :",
+      "before_length": 232,
+      "after_length": 210
+    },
+    {
+      "article": 426,
+      "removed_text": "2 - التزامات المشتري :",
+      "before_length": 263,
+      "after_length": 240
+    },
+    {
+      "article": 436,
+      "removed_text": "( ثانيا ) بيع الحقوق المتنازع فيها :",
+      "before_length": 137,
+      "after_length": 100
+    },
+    {
+      "article": 442,
+      "removed_text": "( ثالثا ) بيع التركة :",
+      "before_length": 118,
+      "after_length": 95
+    },
+    {
+      "article": 446,
+      "removed_text": "( رابعا ) البيع في مرض الموت :",
+      "before_length": 155,
+      "after_length": 124
+    },
+    {
+      "article": 455,
+      "removed_text": "(أولاً) أركان الشركة :",
+      "before_length": 213,
+      "after_length": 190
+    },
+    {
+      "article": 464,
+      "removed_text": "(ثانياً) إدارة الشركة :",
+      "before_length": 228,
+      "after_length": 204
+    },
+    {
+      "article": 469,
+      "removed_text": "(ثالثاً) آثار الشركة :",
+      "before_length": 284,
+      "after_length": 261
+    },
+    {
+      "article": 474,
+      "removed_text": "(رابعاً) طرق انقضاء الشركة :",
+      "before_length": 360,
+      "after_length": 331
+    },
+    {
+      "article": 480,
+      "removed_text": "(خامساً) تصفية الشركة وقسمتها :",
+      "before_length": 418,
+      "after_length": 386
+    },
+    {
+      "article": 496,
+      "removed_text": "(أولا) أركان الصلح :",
+      "before_length": 162,
+      "after_length": 141
+    },
+    {
+      "article": 499,
+      "removed_text": "(ثانيا) آثار الصلح :",
+      "before_length": 63,
+      "after_length": 42
+    },
+    {
+      "article": 502,
+      "removed_text": "(ثالثا) بطلان الصلح :",
+      "before_length": 221,
+      "after_length": 199
+    },
+    {
+      "article": 505,
+      "removed_text": "( أولا ) أركان الإيجار :",
+      "before_length": 126,
+      "after_length": 101
+    },
+    {
+      "article": 511,
+      "removed_text": "( ثانيا ) آثار الإيجار : 1 - التزامات المؤجر :",
+      "before_length": 339,
+      "after_length": 292
+    },
+    {
+      "article": 526,
+      "removed_text": "2 - التزامات المستأجر :",
+      "before_length": 125,
+      "after_length": 101
+    },
+    {
+      "article": 540,
+      "removed_text": "( ثالثا ) التنازل عن الإيجار والتأجير من الباطن :",
+      "before_length": 473,
+      "after_length": 423
+    },
+    {
+      "article": 545,
+      "removed_text": "( رابعا ) انتهاء الإيجار :",
+      "before_length": 425,
+      "after_length": 398
+    },
+    {
+      "article": 562,
+      "removed_text": "( ثانيا) إيجار الوقف :",
+      "before_length": 193,
+      "after_length": 170
+    },
+    {
+      "article": 572,
+      "removed_text": "( أولا ) آثار العارية : 1 - التزامات المعير :",
+      "before_length": 185,
+      "after_length": 139
+    },
+    {
+      "article": 575,
+      "removed_text": "2 - التزامات المستعير :",
+      "before_length": 275,
+      "after_length": 251
+    },
+    {
+      "article": 580,
+      "removed_text": "( ثانيا ) انتهاء العارية :",
+      "before_length": 262,
+      "after_length": 235
+    },
+    {
+      "article": 584,
+      "removed_text": "( أولا ) تقديم مواد العمل :",
+      "before_length": 139,
+      "after_length": 111
+    },
+    {
+      "article": 588,
+      "removed_text": "( ثانيا ) التزامات المقاول :",
+      "before_length": 297,
+      "after_length": 268
+    },
+    {
+      "article": 593,
+      "removed_text": "( ثالثا ) التزامات صاحب العمل :",
+      "before_length": 429,
+      "after_length": 397
+    },
+    {
+      "article": 602,
+      "removed_text": "( رابعا ) التنازل عن المقاولة والمقاولة من الباطن :",
+      "before_length": 169,
+      "after_length": 117
+    },
+    {
+      "article": 606,
+      "removed_text": "( خامسا ) انتهاء المقاولة :",
+      "before_length": 216,
+      "after_length": 188
+    },
+    {
+      "article": 621,
+      "removed_text": "( أولا ) أركان عقد العمل :",
+      "before_length": 377,
+      "after_length": 350
+    },
+    {
+      "article": 627,
+      "removed_text": "( ثانيا ) أحكام عقد العمل : 1 - التزامات العامل :",
+      "before_length": 341,
+      "after_length": 291
+    },
+    {
+      "article": 631,
+      "removed_text": "2 - التزامات صاحب العمل :",
+      "before_length": 681,
+      "after_length": 655
+    },
+    {
+      "article": 634,
+      "removed_text": "( ثالثا ) انتهاء عقد العمل :",
+      "before_length": 221,
+      "after_length": 192
+    },
+    {
+      "article": 640,
+      "removed_text": "( أولا ) أركان الوكالة :",
+      "before_length": 94,
+      "after_length": 69
+    },
+    {
+      "article": 645,
+      "removed_text": "(ثانيا) آثار الوكالة : 1 التزامات الوكيل :",
+      "before_length": 209,
+      "after_length": 166
+    },
+    {
+      "article": 652,
+      "removed_text": "2 التزامات الموكل :",
+      "before_length": 364,
+      "after_length": 344
+    },
+    {
+      "article": 657,
+      "removed_text": "( ثالثا ) انتهاء الوكالة :",
+      "before_length": 123,
+      "after_length": 96
+    },
+    {
+      "article": 662,
+      "removed_text": "( أولا ) التزامات المودع لديه :",
+      "before_length": 124,
+      "after_length": 92
+    },
+    {
+      "article": 668,
+      "removed_text": "(ثانيا) التزامات المودع :",
+      "before_length": 312,
+      "after_length": 286
+    },
+    {
+      "article": 670,
+      "removed_text": "(ثالثا) انتهاء الإيداع :",
+      "before_length": 135,
+      "after_length": 110
+    },
+    {
+      "article": 673,
+      "removed_text": "(رابعا) بعض أنواع الإيداع :",
+      "before_length": 85,
+      "after_length": 57
+    },
+    {
+      "article": 688,
+      "removed_text": "(أولا) إبرام عقد التأمين :",
+      "before_length": 114,
+      "after_length": 87
+    },
+    {
+      "article": 703,
+      "removed_text": "( ثانيا ) التزامات المؤمن له :",
+      "before_length": 372,
+      "after_length": 341
+    },
+    {
+      "article": 711,
+      "removed_text": "(ثالثا) التزامات المؤمن :",
+      "before_length": 523,
+      "after_length": 497
+    },
+    {
+      "article": 716,
+      "removed_text": "(رابعا) انتقال الحقوق والالتزامات الناشئة عن عقد التأمين وانقضاؤها :",
+      "before_length": 454,
+      "after_length": 385
+    },
+    {
+      "article": 723,
+      "removed_text": "(خامسا) بعض أنواع التأمين : التأمين على الحياة :",
+      "before_length": 350,
+      "after_length": 301
+    },
+    {
+      "article": 735,
+      "removed_text": "التأمين من الحريق :",
+      "before_length": 187,
+      "after_length": 167
+    },
+    {
+      "article": 742,
+      "removed_text": "( أولا ) أركان الكفالة :",
+      "before_length": 140,
+      "after_length": 115
+    },
+    {
+      "article": 749,
+      "removed_text": "(ثانيا) آثار الكفالة : 1 العلاقة ما بين الكفيل والدائن :",
+      "before_length": 200,
+      "after_length": 143
+    },
+    {
+      "article": 764,
+      "removed_text": "2 العلاقة ما بين الكفيل والمدين :",
+      "before_length": 209,
+      "after_length": 175
+    },
+    {
+      "article": 789,
+      "removed_text": "(ثانيا) انقضاء الشيوع بالقسمة :",
+      "before_length": 461,
+      "after_length": 429
+    },
+    {
+      "article": 803,
+      "removed_text": "(ثالثا) قسمة المهايأة :",
+      "before_length": 198,
+      "after_length": 174
+    },
+    {
+      "article": 807,
+      "removed_text": "(رابعا) الشيوع الإجباري :",
+      "before_length": 181,
+      "after_length": 155
+    },
+    {
+      "article": 808,
+      "removed_text": "(خامسا) ملكية الأسرة :",
+      "before_length": 166,
+      "after_length": 143
+    },
+    {
+      "article": 813,
+      "removed_text": "(سادسا) ملكية الطبقات والشقق :",
+      "before_length": 131,
+      "after_length": 100
+    },
+    {
+      "article": 856,
+      "removed_text": "( ثانيا ) التصرف القانوني :",
+      "before_length": 211,
+      "after_length": 183
+    },
+    {
+      "article": 859,
+      "removed_text": "( ثالثا ) الشفعة :",
+      "before_length": 123,
+      "after_length": 104
+    },
+    {
+      "article": 873,
+      "removed_text": "( رابعا ) الحيازة : 1 تعريف الحيازة وأركانها :",
+      "before_length": 111,
+      "after_length": 64
+    },
+    {
+      "article": 881,
+      "removed_text": "3 حسن وسوء نية الحائز :",
+      "before_length": 202,
+      "after_length": 178
+    },
+    {
+      "article": 884,
+      "removed_text": "4 انتقال الحيازة :",
+      "before_length": 89,
+      "after_length": 70
+    },
+    {
+      "article": 889,
+      "removed_text": "5 زوال الحيازة :",
+      "before_length": 106,
+      "after_length": 89
+    },
+    {
+      "article": 890,
+      "removed_text": "6 آثار الحيازة :",
+      "before_length": 298,
+      "after_length": 281
+    },
+    {
+      "article": 909,
+      "removed_text": "( ثانيا ) الوصية :",
+      "before_length": 120,
+      "after_length": 101
+    },
+    {
+      "article": 923,
+      "removed_text": "( ثانيا ) حق الاستعمال وحق السكنى :",
+      "before_length": 283,
+      "after_length": 247
+    },
+    {
+      "article": 961,
+      "removed_text": "( ثانيا ) بالنسبة إلى الدائن المرتهن :",
+      "before_length": 191,
+      "after_length": 152
+    },
+    {
+      "article": 969,
+      "removed_text": "( أولا ) حق التقدم :",
+      "before_length": 78,
+      "after_length": 57
+    },
+    {
+      "article": 973,
+      "removed_text": "( ثانيا ) حق التتبع :",
+      "before_length": 326,
+      "after_length": 304
+    },
+    {
+      "article": 1007,
+      "removed_text": "( ثانيا ) بالنسبة إلى الدائن المرتهن :",
+      "before_length": 116,
+      "after_length": 77
+    }
+  ],
+  "remaining_candidates": [
+    {
+      "article": 30,
+      "ending": "ورد على محل واستند إلى سبب معتبرين قانونا ، وذلك دون إخلال بما يتطلبه القانون ، في حالات خاصة ، من أوضاع معينة لانعقاد العقد . (أولا) أركان العقد : 1 - الرضاء :"
+    },
+    {
+      "article": 31,
+      "ending": "لإرادة عند إجراء التصرف ، وأن يحصل التعبير عنها ، وتعتبر الإرادة متوفرة عند إجراء التصرف ما لم يثبت العكس أو يقضي القانون بخلاف ذلك . ( أ ) التعبير عن الإرادة :"
+    },
+    {
+      "article": 39,
+      "ending": "إذا حدد الموجب ميعاداً للقبول أو اقتضت هذا الميعاد ظروف الحال أو طبيعة المعاملة بقى الإيجاب ملزما للموجب طوال هذا الميعاد وسقط بفواته . القبول :"
+    },
+    {
+      "article": 43,
+      "ending": "، اعتبر أن العقد قد تم ، وتقضي المحكمة في المسائل التفصيلية إذا لم يتم الاتفاق عليها طبقا لأحكام القانون وطبيعة العقد والعرف والعدالة . ارتباط الإيجاب بالقبول :"
+    },
+    {
+      "article": 51,
+      "ending": "رة السابقة . ج ) أما إذا مات الموعود له ، انتقل خيار قبول العقد الموعود بإبرامه إلى خلفائه ، ما لم تكن شخصية الموعود له محل اعتبار في الوعد . التعاقد بالعربون :"
+    },
+    {
+      "article": 56,
+      "ending": "إذا اتضح من شروط العقد في التعاقد بالمزايدة وجوب المصادقة على إرسائه فلا يتم العقد إلا بتمام هذه المصادقة . التعاقد بالإذعان :"
+    },
+    {
+      "article": 70,
+      "ending": "إذا اتفق المتعاقدان على شكل معين لقيام العقد ، فإنه لا يجوز لأحدهما بدون رضاء الآخر أن يتمسك بقيامه ، ما لم يأت في الشكل المتفق عليه . ( ب ) سلامة الرضاء :"
+    },
+    {
+      "article": 71,
+      "ending": "لا يكون الرضاء بالعقد سليما ، إلا إذا جاء عن ذي أهلية لإجرائه ، وخاليا من العيوب التي تشوبه . الأهلية في التعاقد :"
+    },
+    {
+      "article": 83,
+      "ending": "تسري أحكام قانون الولاية على المال فيما لم يرد به نص في هذا القانون . عيوب الرضاء : الغلط :"
+    },
+    {
+      "article": 93,
+      "ending": "إذا لجأ كل من المتعاقدين إلى التدليس على الآخر ، وجره بذلك إلى التعاقد ، امتنع على أي منهما التمسك بإبطال العقد . الإكراه :"
+    },
+    {
+      "article": 95,
+      "ending": "ع مراعاة ما تقضي به الفقرة التالية . ج ) يجوز في التبرعات ، طلب الإبطال ، إذا كان الرضاء بها قد جاء نتيجة الإكراه ، دون اعتبار لمن صدر الإكراه عنه . الاستغلال :"
+    },
+    {
+      "article": 97,
+      "ending": " فإن سريان مدة السنة لا تبدأ إلا من تاريخ زوال تأثير الهوى أو السطوة ، على أن لا تسمع دعوى الاستغلال على أية حال بفوات خمس عشرة سنة من وقت إبرام العقد . الغبن :"
+    },
+    {
+      "article": 102,
+      "ending": " إبرام العقد ، وبالنسبة لعديمي الأهلية وناقصيها من تاريخ اكتمال الأهلية أو الموت، وعلى أية حال لا تسمع الدعوى بمضي خمس عشرة سنة من وقت إبرام العقد . 2 - المحل :"
+    },
+    {
+      "article": 117,
+      "ending": "عذار ناقص الأهلية ، إلا إذا كان قد وجه إليه بعد إكتمال أهليته . ج ) فإذا انقضى الميعاد المحدد بالإعذار من غير اختيار ، اعتبر ذلك إجازة للعقد. 2 - العقد الباطل :"
+    },
+    {
+      "article": 151,
+      "ending": "قد بوجه عام من أحكام القانون ، إلا ما كان منها متعارضا مع قيام التصرف على الإرادة الواحدة ، وعلى الأخص ما تعلق بتوافق إرادتي طرفي العقد . الوعد بجائزة للجمهور :"
+    },
+    {
+      "article": 879,
+      "ending": " أو كان فيها لبس ، فلا يكون لها أثر قبل من وقع عليه الإكراه أو أخفيت عنه الحيازة أو التبس أمرها عليه ، إلا من الوقت الذي تزول فيه هذه العيوب . 2 إثبات الحيازة :"
+    }
+  ]
+}

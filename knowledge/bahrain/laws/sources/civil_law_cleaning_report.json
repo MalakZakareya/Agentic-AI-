@@ -1,0 +1,374 @@
+[
+  {
+    "article": 8,
+    "removed_text": "* * * * الباب الثاني الحق الفصل الأول صاحب الحق 1 - الشخص الطبيعي",
+    "original_length": 124,
+    "cleaned_length": 58
+  },
+  {
+    "article": 18,
+    "removed_text": "الفصل الثاني محل الحق",
+    "original_length": 257,
+    "cleaned_length": 235
+  },
+  {
+    "article": 26,
+    "removed_text": "الفصل الثالث استعمال الحق",
+    "original_length": 413,
+    "cleaned_length": 387
+  },
+  {
+    "article": 28,
+    "removed_text": "* * * * الباب الأول مصادر الالتزام الفصل الأول العقد",
+    "original_length": 389,
+    "cleaned_length": 336
+  },
+  {
+    "article": 29,
+    "removed_text": "الفرع الأول انعقاد العقد",
+    "original_length": 85,
+    "cleaned_length": 60
+  },
+  {
+    "article": 124,
+    "removed_text": "الفرع الثاني آثار العقد (أولا) تفسير العقد وتحديد مضمونه : 1 - تفسير العقد :",
+    "original_length": 345,
+    "cleaned_length": 268
+  },
+  {
+    "article": 139,
+    "removed_text": "الفرع الثالث – انحلال العقد (أولا) فسخ العقد :",
+    "original_length": 463,
+    "cleaned_length": 416
+  },
+  {
+    "article": 150,
+    "removed_text": "الفصل الثاني الإرادة المنفردة",
+    "original_length": 242,
+    "cleaned_length": 212
+  },
+  {
+    "article": 157,
+    "removed_text": "الفصل الثالث المسئولية عن العمل غير المشروع (الفعل الضار) (أولا ً) حالات المسئولية عن العمل غير المشروع : 1- المسئولية عن الأعمال الشخصية :",
+    "original_length": 318,
+    "cleaned_length": 178
+  },
+  {
+    "article": 181,
+    "removed_text": "الفصل الرابع الفعل النافع أو الإثراء بلا سبب",
+    "original_length": 151,
+    "cleaned_length": 106
+  },
+  {
+    "article": 190,
+    "removed_text": "(ثانيا) الفضالة :",
+    "original_length": 226,
+    "cleaned_length": 208
+  },
+  {
+    "article": 200,
+    "removed_text": "الفصل الخامس القانون",
+    "original_length": 200,
+    "cleaned_length": 179
+  },
+  {
+    "article": 201,
+    "removed_text": "* * * * الباب الثاني آثار الالتزام الفصل الأول التنفيذ الجبري",
+    "original_length": 212,
+    "cleaned_length": 150
+  },
+  {
+    "article": 228,
+    "removed_text": "الفصل الثاني الضمان العام للدائنين ووسائل المحافظة عليه",
+    "original_length": 535,
+    "cleaned_length": 479
+  },
+  {
+    "article": 244,
+    "removed_text": "* * * * الباب الثالث الأوصاف المعدلة لآثار الالتزام الفصل الأول الشرط والأجل ( أولا ) الشرط :",
+    "original_length": 321,
+    "cleaned_length": 227
+  },
+  {
+    "article": 257,
+    "removed_text": "الفصل الثاني تعدد محل الالتزام ( أولا ) الالتزام التخييري :",
+    "original_length": 142,
+    "cleaned_length": 82
+  },
+  {
+    "article": 262,
+    "removed_text": "الفصل الثالث تعدد طرفي الالتزام ( أولا ) التضامن :",
+    "original_length": 201,
+    "cleaned_length": 150
+  },
+  {
+    "article": 286,
+    "removed_text": "* * * * الباب الرابع انتقال الالتزام الفصل الأول حوالة الحق",
+    "original_length": 406,
+    "cleaned_length": 346
+  },
+  {
+    "article": 299,
+    "removed_text": "الفصل الثاني حوالة الدين",
+    "original_length": 364,
+    "cleaned_length": 339
+  },
+  {
+    "article": 313,
+    "removed_text": "* * * * الباب الخامس انقضاء الالتزام الفصل الأول الوفاء",
+    "original_length": 176,
+    "cleaned_length": 120
+  },
+  {
+    "article": 340,
+    "removed_text": "الفصل الثاني انقضاء الالتزام بما يعادل الوفاء (أولاً) الوفاء بمقابل :",
+    "original_length": 401,
+    "cleaned_length": 331
+  },
+  {
+    "article": 361,
+    "removed_text": "الفصل الثالث انقضاء الالتزام دون وفاء (أولا) الإبراء :",
+    "original_length": 315,
+    "cleaned_length": 260
+  },
+  {
+    "article": 380,
+    "removed_text": "* * * * الباب الأول العقود التي تقع على الملكية الفصل الأول البيع الفرع الأول - البيع بوجه عام",
+    "original_length": 402,
+    "cleaned_length": 307
+  },
+  {
+    "article": 435,
+    "removed_text": "الفرع الثاني - بعض أنواع البيوع ( أولا ) بيع ملك الغير :",
+    "original_length": 204,
+    "cleaned_length": 147
+  },
+  {
+    "article": 447,
+    "removed_text": "الفصل الثاني المقايضة",
+    "original_length": 187,
+    "cleaned_length": 165
+  },
+  {
+    "article": 451,
+    "removed_text": "الفصل الثالث الهبة",
+    "original_length": 127,
+    "cleaned_length": 108
+  },
+  {
+    "article": 452,
+    "removed_text": "الفصل الرابع الشركة",
+    "original_length": 89,
+    "cleaned_length": 69
+  },
+  {
+    "article": 486,
+    "removed_text": "الفصل الخامس القرض",
+    "original_length": 77,
+    "cleaned_length": 58
+  },
+  {
+    "article": 495,
+    "removed_text": "الفصل السادس الصلح",
+    "original_length": 75,
+    "cleaned_length": 56
+  },
+  {
+    "article": 504,
+    "removed_text": "* * * * الباب الثاني العقود التي ترد على منفعة الأشياء الفصل الأول الإيجار الفرع الأول - الإيجار بوجه عام",
+    "original_length": 150,
+    "cleaned_length": 44
+  },
+  {
+    "article": 556,
+    "removed_text": "الفرع الثاني - بعض أنواع الإيجار ( أولا ) إيجار الأراضي الزراعية :",
+    "original_length": 239,
+    "cleaned_length": 172
+  },
+  {
+    "article": 571,
+    "removed_text": "الفصل الثاني العارية",
+    "original_length": 98,
+    "cleaned_length": 77
+  },
+  {
+    "article": 583,
+    "removed_text": "* * * * الباب الثالث العقود الواردة على العمل الفصل الأول المقاولة الفرع الأول - القواعد العامة للمقاولات",
+    "original_length": 160,
+    "cleaned_length": 54
+  },
+  {
+    "article": 611,
+    "removed_text": "الفرع الثاني - الأحكام الخاصة بمقاولات المباني والإنشاءات",
+    "original_length": 356,
+    "cleaned_length": 298
+  },
+  {
+    "article": 620,
+    "removed_text": "الفصل الثاني عقد العمل",
+    "original_length": 91,
+    "cleaned_length": 68
+  },
+  {
+    "article": 639,
+    "removed_text": "الفصل الثالث الوكالة",
+    "original_length": 430,
+    "cleaned_length": 409
+  },
+  {
+    "article": 661,
+    "removed_text": "الفصل الرابع الإيداع",
+    "original_length": 358,
+    "cleaned_length": 337
+  },
+  {
+    "article": 677,
+    "removed_text": "الفصل الخامس الحراسة",
+    "original_length": 101,
+    "cleaned_length": 80
+  },
+  {
+    "article": 685,
+    "removed_text": "* * * * الباب الرابع التأمين والكفالة الفصل الأول التأمين",
+    "original_length": 269,
+    "cleaned_length": 211
+  },
+  {
+    "article": 741,
+    "removed_text": "الفصل الثاني الكفالة",
+    "original_length": 293,
+    "cleaned_length": 272
+  },
+  {
+    "article": 768,
+    "removed_text": "الباب الأول حق الملكية الفصل الأول أحكام حق الملكية الفرع الأول - نطاق حق الملكية",
+    "original_length": 205,
+    "cleaned_length": 123
+  },
+  {
+    "article": 776,
+    "removed_text": "الفرع الثاني – الملكية الشائعة (أولا) أحكام الشيوع :",
+    "original_length": 272,
+    "cleaned_length": 219
+  },
+  {
+    "article": 843,
+    "removed_text": "الفصل الثاني أسباب كسب الملكية الفرع الأول - كسب الملكية ابتداء (الاستيلاء)",
+    "original_length": 331,
+    "cleaned_length": 255
+  },
+  {
+    "article": 848,
+    "removed_text": "الفرع الثاني - كسب الملكية ما بين الأحياء ( أولا ) الالتصاق :",
+    "original_length": 157,
+    "cleaned_length": 95
+  },
+  {
+    "article": 908,
+    "removed_text": "الفرع الثالث - كسب الملكية بسبب الوفاة ( أولا ) الميراث :",
+    "original_length": 371,
+    "cleaned_length": 313
+  },
+  {
+    "article": 912,
+    "removed_text": "* * * * الباب الثاني الحقوق المتفرعة عن حق الملكية الفصل الأول حق الانتفاع وحق الاستعمال وحق السكنى ( أولا ) حق الانتفاع :",
+    "original_length": 322,
+    "cleaned_length": 199
+  },
+  {
+    "article": 926,
+    "removed_text": "الفصل الثاني حقوق الارتفاق",
+    "original_length": 155,
+    "cleaned_length": 128
+  },
+  {
+    "article": 941,
+    "removed_text": "الباب الأول الرهن التأميني الفصل الأول إنشاء الرهن التأميني",
+    "original_length": 245,
+    "cleaned_length": 185
+  },
+  {
+    "article": 954,
+    "removed_text": "الفصل الثاني آثار الرهن التأميني الفرع الأول - أثر الرهن فيما بين المتعاقدين ( أولا ) بالنسبة للراهن :",
+    "original_length": 359,
+    "cleaned_length": 256
+  },
+  {
+    "article": 964,
+    "removed_text": "الفرع الثاني أثر الرهن بالنسبة للغير",
+    "original_length": 358,
+    "cleaned_length": 321
+  },
+  {
+    "article": 994,
+    "removed_text": "الفصل الثالث انقضاء الرهن التأميني",
+    "original_length": 91,
+    "cleaned_length": 56
+  },
+  {
+    "article": 997,
+    "removed_text": "* * * * الباب الثاني الرهن الحيازي الفصل الأول إنشاء الرهن الحيازي",
+    "original_length": 354,
+    "cleaned_length": 287
+  },
+  {
+    "article": 1003,
+    "removed_text": "الفصل الثاني آثار الرهن الحيازي الفرع الأول - فيما بين المتعاقدين ( أولا ) بالنسبة للراهن :",
+    "original_length": 215,
+    "cleaned_length": 123
+  },
+  {
+    "article": 1012,
+    "removed_text": "الفرع الثاني بالنسبة للغير",
+    "original_length": 94,
+    "cleaned_length": 67
+  },
+  {
+    "article": 1015,
+    "removed_text": "الفصل الثالث انقضاء الرهن الحيازي",
+    "original_length": 356,
+    "cleaned_length": 322
+  },
+  {
+    "article": 1018,
+    "removed_text": "الفصل الرابع بعض أنواع الرهن الحيازي الفرع الأول رهن العقار",
+    "original_length": 314,
+    "cleaned_length": 254
+  },
+  {
+    "article": 1020,
+    "removed_text": "الفرع الثاني رهن المنقول",
+    "original_length": 307,
+    "cleaned_length": 282
+  },
+  {
+    "article": 1024,
+    "removed_text": "الفرع الثالث رهن الدين",
+    "original_length": 255,
+    "cleaned_length": 232
+  },
+  {
+    "article": 1032,
+    "removed_text": "* * * * الباب الثالث حقوق الامتياز الفصل الأول أحكام عامة",
+    "original_length": 240,
+    "cleaned_length": 182
+  },
+  {
+    "article": 1041,
+    "removed_text": "الفصل الثاني أنواع الحقوق الممتازة",
+    "original_length": 245,
+    "cleaned_length": 210
+  },
+  {
+    "article": 1042,
+    "removed_text": "الفرع الأول حقوق الامتياز العامة وحقوق الامتياز الخاصة الواقعة على منقول",
+    "original_length": 160,
+    "cleaned_length": 87
+  },
+  {
+    "article": 1051,
+    "removed_text": "الفرع الثاني حقوق الامتياز الخاصة الواقعة على عقار",
+    "original_length": 299,
+    "cleaned_length": 248
+  }
+]

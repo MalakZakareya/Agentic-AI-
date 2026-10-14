@@ -532,6 +532,26 @@ def validate_generated_draft(
                 topic
             )
 
+
+    # Require human review when legal research
+    # cannot confirm that sources are current.
+    agent_requires_review = any(
+        isinstance(item.get("legal_research_agent"), dict)
+        and (
+            item["legal_research_agent"].get("decision") != "PROCEED"
+            or item["legal_research_agent"].get("evidence_status")
+            != "VERIFIED_CURRENT"
+        )
+        for item in legal_requirements
+    )
+
+    if agent_requires_review:
+        notes.append(
+            "Human legal review required: retrieved legal "
+            "sources have not been confirmed as currently "
+            "in force."
+        )
+
     return {
         "title": title,
         "draft": draft,
@@ -560,8 +580,8 @@ def validate_generated_draft(
                 "VERIFIED"
                 if (
                     verified_sources
-                    and not
-                    unverified_references
+                    and not unverified_references
+                    and not agent_requires_review
                 )
                 else (
                     "PARTIALLY_VERIFIED"
