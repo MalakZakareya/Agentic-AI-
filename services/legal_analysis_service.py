@@ -1962,21 +1962,19 @@ def analyze_legal_points(
         dict[str, Any]
     ] = []
 
-    for start_index in range(
-        0,
-        len(retrieved_items),
-        LEGAL_BATCH_SIZE,
-    ):
-        batch = retrieved_items[
-            start_index:
-            start_index + LEGAL_BATCH_SIZE
-        ]
+    from concurrent.futures import ThreadPoolExecutor
 
-        batch_results = (
-            analyze_legal_batch(
-                batch
-            )
+    batches = [
+        retrieved_items[start:start + LEGAL_BATCH_SIZE]
+        for start in range(0, len(retrieved_items), LEGAL_BATCH_SIZE)
+    ]
+
+    with ThreadPoolExecutor(max_workers=2) as executor:
+        all_batch_results = list(
+            executor.map(analyze_legal_batch, batches)
         )
+
+    for batch, batch_results in zip(batches, all_batch_results):
 
         for offset, item in enumerate(
             batch
