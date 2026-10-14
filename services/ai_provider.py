@@ -1,3 +1,4 @@
+from functools import lru_cache
 from typing import Any, cast
 
 from openai import OpenAI
@@ -33,6 +34,7 @@ def get_ai_provider() -> str:
     return provider
 
 
+@lru_cache(maxsize=1)
 def get_ai_client() -> OpenAI:
     """
     Create an OpenAI-compatible client for the
