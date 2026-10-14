@@ -1,3 +1,4 @@
+from functools import lru_cache
 import json
 import re
 from pathlib import Path
@@ -352,6 +353,7 @@ LEGAL_CONCEPTS: dict[str, list[str]] = {
 
 
 
+@lru_cache(maxsize=1)
 def load_regulations() -> list[dict[str, Any]]:
     """
     Load Bahrain regulations from the original file
@@ -423,6 +425,7 @@ def load_regulations() -> list[dict[str, Any]]:
 
 
 
+@lru_cache(maxsize=4096)
 def normalize_text(
     text: str,
 ) -> str:
@@ -534,6 +537,7 @@ def normalize_match_word(
     return word
 
 
+@lru_cache(maxsize=4096)
 def get_query_words(
     query: str,
 ) -> list[str]:
@@ -567,6 +571,7 @@ def get_query_words(
     return useful_words
 
 
+@lru_cache(maxsize=4096)
 def get_query_phrases(
     query: str,
 ) -> list[str]:
@@ -598,6 +603,7 @@ def get_query_phrases(
 
 
 
+@lru_cache(maxsize=4096)
 def detect_legal_concepts(query: str) -> list[str]:
     """Detect legal concepts with explicit holiday disambiguation."""
     normalized_query = normalize_text(query)
@@ -649,6 +655,7 @@ def detect_legal_concepts(query: str) -> list[str]:
 
 
 
+@lru_cache(maxsize=4096)
 def get_expanded_terms(
     query: str,
 ) -> list[str]:
