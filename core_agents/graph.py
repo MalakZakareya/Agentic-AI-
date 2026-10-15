@@ -165,7 +165,7 @@ def evidence_check_agent(state: LegalAgentState):
         }
 
     return {
-        "evidence_status": "VERIFIED",
+        "evidence_status": "VERIFIED_CURRENT",
         "decision": "PROCEED",
     }
 
