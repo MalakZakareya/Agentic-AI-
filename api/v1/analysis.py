@@ -299,23 +299,30 @@ async def analyze_document(
             )
         )
 
-        legal_research_review = {
-            "status": (
-                "HUMAN_REVIEW"
-                if requires_review
-                else "NOT_ASSESSED"
-            ),
-            "evidence_status": (
-                "REQUIRES_VERIFICATION"
-                if requires_review
-                else "NOT_ASSESSED"
-            ),
-            "message": (
+        if not legal_retrieval:
+            review_status = "NOT_ASSESSED"
+            evidence_status = "NOT_ASSESSED"
+            review_message = "No legal research evidence was assessed."
+        elif requires_review:
+            review_status = "HUMAN_REVIEW"
+            evidence_status = "REQUIRES_VERIFICATION"
+            review_message = (
                 "Human legal review required. Legal sources "
                 "have not been confirmed as currently in force."
-                if requires_review
-                else "No current-law verification is asserted."
-            ),
+            )
+        else:
+            review_status = "VERIFIED_CURRENT"
+            evidence_status = "VERIFIED_CURRENT"
+            review_message = (
+                "All assessed legal sources passed the recorded "
+                "current-law verification status check. "
+                "This does not establish document compliance."
+            )
+
+        legal_research_review = {
+            "status": review_status,
+            "evidence_status": evidence_status,
+            "message": review_message,
         }
 
         response = {
