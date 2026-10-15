@@ -1231,6 +1231,28 @@ def validate_legal_analysis(
         )
     )
 
+    raw_articles = result.get("relevant_articles", [])
+    unsupported_citations = (
+        isinstance(raw_articles, list)
+        and any(
+            not isinstance(article, dict)
+            or find_trusted_legal_source(
+                ai_article=article,
+                legal_sources=legal_sources,
+            ) is None
+            for article in raw_articles
+        )
+    )
+
+    if unsupported_citations and status in {
+        "PASS", "ISSUE", "WARNING"
+    }:
+        status = "NOT VERIFIED"
+        explanation = (
+            "The AI response contained unsupported legal "
+            "citations. " + explanation
+        )
+
     if (
         status
         in {
