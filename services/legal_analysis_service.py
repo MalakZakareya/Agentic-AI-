@@ -688,28 +688,21 @@ def retrieve_laws_for_points(
             )
         )
 
-    if results:
-        from core_agents.graph import build_graph
+    from core_agents.graph import evidence_check_agent
 
-        combined_query = " ".join(
-            str(point.get("title", "")).strip()
-            for point in points
-            if isinstance(point, dict)
-        ).strip()
+    for item in results:
+        regulations = item.get("regulations", [])
 
-        if combined_query:
-            agent_result = build_graph().invoke({
-                "query": combined_query,
-                "search_attempts": 0,
-            })
+        agent_result = evidence_check_agent({
+            "query": item.get("search_query", ""),
+            "evidence": regulations,
+            "search_attempts": 2,
+        })
 
-            agent_review = {
-                "decision": agent_result.get("decision"),
-                "evidence_status": agent_result.get("evidence_status"),
-            }
-
-            for item in results:
-                item["legal_research_agent"] = dict(agent_review)
+        item["legal_research_agent"] = {
+            "decision": agent_result.get("decision"),
+            "evidence_status": agent_result.get("evidence_status"),
+        }
 
     return results
 
