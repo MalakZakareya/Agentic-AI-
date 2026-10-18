@@ -3046,6 +3046,8 @@ footer {
                         </div>
 
 
+                        <div id="legalResearchReview" class="legal-summary" role="status" aria-live="polite" hidden></div>
+
                         <div id="legalAnalysisList"></div>
 
                     </div>
@@ -3942,6 +3944,14 @@ footer {
             "resultSummary"
         ).textContent = "—";
 
+        const reviewElement =
+            document.getElementById(
+                "legalResearchReview"
+            );
+
+        reviewElement.textContent = "";
+        reviewElement.hidden = true;
+
         document.getElementById(
             "legalAnalysisList"
         ).innerHTML = "";
@@ -4469,6 +4479,34 @@ footer {
                 analysisData.summary ||
                 "No summary available.";
 
+
+            const review =
+                data.legal_research_review || {};
+
+            const reviewElement =
+                document.getElementById(
+                    "legalResearchReview"
+                );
+
+            const reviewStatus =
+                String(
+                    review.status || "NOT_ASSESSED"
+                ).toUpperCase();
+
+            const reviewMessages = {
+                HUMAN_REVIEW:
+                    "Human legal review required. The legal sources have not been confirmed as currently effective.",
+                VERIFIED_CURRENT:
+                    "The sources passed the recorded verification-status check. This does not establish document compliance.",
+                NOT_ASSESSED:
+                    "Legal source verification was not assessed."
+            };
+
+            reviewElement.hidden = false;
+            reviewElement.textContent =
+                "Legal source verification: " +
+                (reviewMessages[reviewStatus] ||
+                 reviewMessages.NOT_ASSESSED);
 
             renderLegalAnalysis(
                 legalAnalysis
