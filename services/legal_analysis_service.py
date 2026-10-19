@@ -1845,10 +1845,16 @@ IMPORTANT RULES:
 - Carefully determine whether each retrieved article is genuinely
   applicable to the document point.
 - Ignore irrelevant retrieved provisions.
-  - Distinguish legal relevance from verification of current legal effect.
-  - If a supplied provision is genuinely relevant, include it in
-    relevant_articles even when its effective_status is not verified_current.
-  - Never describe an unverified provision as confirmed currently effective.
+- Examine each supplied legal source for its substantive connection
+  to the specific document point, not merely shared keywords.
+- Distinguish legal relevance from verification of current legal effect.
+- Include genuinely applicable provisions in relevant_articles,
+  even when their effective_status is not verified_current.
+- For each cited provision, explain which part of the document point
+  it addresses and what legal condition or limitation it introduces.
+- Never describe an unverified provision as confirmed currently effective.
+- Do not omit a relevant provision solely because its current legal
+  effect has not been independently verified.
 - If the supplied provisions are insufficient, return NOT VERIFIED.
 - Preserve law numbers, years and article numbers exactly.
 - Return one result for every supplied batch_index.
