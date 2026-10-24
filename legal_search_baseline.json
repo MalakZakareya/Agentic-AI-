@@ -1,0 +1,209 @@
+{
+  "annual leave entitlement": [
+    {
+      "id": "BH-LABOUR-36-2012-ARTICLE-59",
+      "score": 37
+    },
+    {
+      "id": "BH-LABOUR-36-2012-ARTICLE-58",
+      "score": 33
+    },
+    {
+      "id": "BH-LABOUR-36-2012-ARTICLE-60",
+      "score": 33
+    },
+    {
+      "id": "BH-LABOUR-36-2012-ARTICLE-26",
+      "score": 31
+    },
+    {
+      "id": "BH-LABOUR-36-2012-ARTICLE-47",
+      "score": 31
+    },
+    {
+      "id": "BH-LABOUR-36-2012-ARTICLE-65",
+      "score": 31
+    },
+    {
+      "id": "BH-LABOUR-36-2012-ARTICLE-104",
+      "score": 31
+    },
+    {
+      "id": "BH-COMMERCIAL-7-1987-ARTICLE-321",
+      "score": 31
+    }
+  ],
+  "employment termination notice period": [
+    {
+      "id": "BH-LABOUR-36-2012-ARTICLE-100",
+      "score": 42
+    },
+    {
+      "id": "BH-LABOUR-36-2012-ARTICLE-102",
+      "score": 39
+    },
+    {
+      "id": "BH-LABOUR-36-2012-ARTICLE-105",
+      "score": 38
+    },
+    {
+      "id": "BH-LABOUR-36-2012-ARTICLE-110",
+      "score": 38
+    },
+    {
+      "id": "BH-LABOUR-36-2012-ARTICLE-117",
+      "score": 38
+    },
+    {
+      "id": "BH-LABOUR-36-2012-ARTICLE-135",
+      "score": 38
+    },
+    {
+      "id": "BH-LABOUR-36-2012-ARTICLE-99",
+      "score": 37
+    },
+    {
+      "id": "BH-LABOUR-36-2012-ARTICLE-103",
+      "score": 37
+    },
+    {
+      "id": "BH-LABOUR-36-2012-ARTICLE-106",
+      "score": 36
+    },
+    {
+      "id": "BH-LABOUR-36-2012-ARTICLE-83",
+      "score": 35
+    }
+  ],
+  "overtime working hours": [
+    {
+      "id": "BH-LABOUR-36-2012-ARTICLE-53",
+      "score": 40
+    },
+    {
+      "id": "BH-LABOUR-36-2012-ARTICLE-54",
+      "score": 38
+    },
+    {
+      "id": "BH-LABOUR-36-2012-ARTICLE-27",
+      "score": 37
+    },
+    {
+      "id": "BH-LABOUR-36-2012-ARTICLE-52",
+      "score": 37
+    },
+    {
+      "id": "BH-LABOUR-36-2012-ARTICLE-55",
+      "score": 37
+    },
+    {
+      "id": "BH-LABOUR-36-2012-ARTICLE-57",
+      "score": 34
+    },
+    {
+      "id": "BH-LABOUR-36-2012-ARTICLE-25",
+      "score": 33
+    },
+    {
+      "id": "BH-LABOUR-36-2012-ARTICLE-35",
+      "score": 33
+    },
+    {
+      "id": "BH-LABOUR-36-2012-ARTICLE-51",
+      "score": 33
+    },
+    {
+      "id": "BH-LABOUR-36-2012-ARTICLE-56",
+      "score": 33
+    }
+  ],
+  "commercial contract payment obligations": [
+    {
+      "id": "BH-COMMERCIAL-7-1987-ARTICLE-36",
+      "score": 61
+    },
+    {
+      "id": "BH-COMMERCIAL-7-1987-ARTICLE-186",
+      "score": 60
+    },
+    {
+      "id": "BH-COMPANIES-21-2001-ARTICLE-252",
+      "score": 56
+    },
+    {
+      "id": "BH-LABOUR-36-2012-ARTICLE-99",
+      "score": 55
+    },
+    {
+      "id": "BH-CIVIL-19-2001-ARTICLE-545",
+      "score": 55
+    },
+    {
+      "id": "BH-CIVIL-19-2001-ARTICLE-551",
+      "score": 55
+    },
+    {
+      "id": "BH-LABOUR-36-2012-ARTICLE-71",
+      "score": 54
+    },
+    {
+      "id": "BH-CIVIL-19-2001-ARTICLE-543",
+      "score": 54
+    },
+    {
+      "id": "BH-LABOUR-36-2012-ARTICLE-72",
+      "score": 53
+    },
+    {
+      "id": "BH-CIVIL-19-2001-ARTICLE-99",
+      "score": 53
+    }
+  ],
+  "personal data protection consent": [
+    {
+      "id": "BH-PDPL-30-2018-ARTICLE-1",
+      "score": 66
+    },
+    {
+      "id": "BH-PDPL-30-2018-ARTICLE-8",
+      "score": 63
+    },
+    {
+      "id": "BH-PDPL-30-2018-ARTICLE-10",
+      "score": 63
+    },
+    {
+      "id": "BH-PDPL-30-2018-ARTICLE-30",
+      "score": 63
+    },
+    {
+      "id": "BH-PDPL-30-2018-ARTICLE-4",
+      "score": 60
+    },
+    {
+      "id": "BH-PDPL-30-2018-ARTICLE-5",
+      "score": 60
+    },
+    {
+      "id": "BH-PDPL-30-2018-ARTICLE-6",
+      "score": 60
+    },
+    {
+      "id": "BH-PDPL-30-2018-ARTICLE-7",
+      "score": 60
+    },
+    {
+      "id": "BH-PDPL-30-2018-ARTICLE-12",
+      "score": 60
+    },
+    {
+      "id": "BH-PDPL-30-2018-ARTICLE-18",
+      "score": 60
+    }
+  ],
+  "??????? ??????? ??????": [],
+  "????? ??? ????? ????? ???????": [],
+  "????? ????? ????????": [],
+  "???????? ????? ?? ????? ???????": [],
+  "????? ???????? ??????? ?????????": []
+}

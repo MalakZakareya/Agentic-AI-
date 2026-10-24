@@ -78,6 +78,12 @@ POINT_SEARCH_QUERIES: dict[str, list[str]] = {
         "سرية البيانات",
         "البيانات الشخصية",
     ],
+    "discrimination": [
+        "discrimination between employees",
+        "\u0627\u0644\u062a\u0645\u064a\u064a\u0632 \u0628\u064a\u0646 \u0627\u0644\u0639\u0645\u0627\u0644",
+        "\u062d\u0638\u0631 \u0627\u0644\u062a\u0645\u064a\u064a\u0632",
+        "\u0627\u0644\u062a\u0645\u064a\u064a\u0632 \u0641\u064a \u0627\u0644\u0623\u062c\u0648\u0631",
+    ],
 }
 
 
@@ -132,13 +138,6 @@ def detect_point_search_group(
         + category
     ).strip()
 
-    if (
-        "employment relationship" in combined
-        or "employment contract" in combined
-        or "employment" == category
-        or "عقد العمل" in combined
-    ):
-        return "employment"
 
     if (
         "salary" in combined
@@ -197,6 +196,25 @@ def detect_point_search_group(
         or "بيانات شخصية" in combined
     ):
         return "confidentiality"
+
+    discrimination_text = normalize_lookup_text(
+        " ".join(str(point.get(field, "")) for field in (
+            "title", "category", "original_text", "explanation"
+        ))
+    )
+    if (
+        "discriminat" in discrimination_text
+        or "\u062a\u0645\u064a\u064a\u0632" in discrimination_text
+    ):
+        return "discrimination"
+
+    if (
+        "employment relationship" in combined
+        or "employment contract" in combined
+        or "employment" == category
+        or "عقد العمل" in combined
+    ):
+        return "employment"
 
     return ""
 
@@ -396,6 +414,62 @@ def regulation_is_applicable_to_point(
     return True
 
 
+
+def detect_specific_wage_deduction_group(
+    point: dict[str, Any],
+) -> str:
+    """Identify clear loan or disciplinary wage deductions."""
+    text = normalize_lookup_text(
+        " ".join(
+            str(point.get(field, ""))
+            for field in ("title", "original_text", "explanation")
+        )
+    )
+
+    wage_terms = (
+        "salary", "wage", "wages",
+        "\u0631\u0627\u062a\u0628",
+        "\u0623\u062c\u0631",
+        "\u0623\u062c\u0648\u0631",
+    )
+    deduction_terms = (
+        "deduct", "withhold",
+        "\u062e\u0635\u0645",
+        "\u0627\u0642\u062a\u0637\u0627\u0639",
+        "\u0627\u0633\u062a\u0642\u0637\u0627\u0639",
+    )
+
+    if not (
+        any(term in text for term in wage_terms)
+        and any(term in text for term in deduction_terms)
+    ):
+        return ""
+
+    loan = any(
+        term in text
+        for term in (
+            "loan", "repayment",
+            "\u0642\u0631\u0636",
+            "\u0642\u0631\u0648\u0636",
+        )
+    )
+    disciplinary = any(
+        term in text
+        for term in (
+            "disciplin", "penalt", "misconduct",
+            "\u062a\u0623\u062f\u064a\u0628",
+            "\u062c\u0632\u0627\u0621",
+        )
+    )
+
+    if loan and not disciplinary:
+        return "salary_loan_deduction"
+    if disciplinary and not loan:
+        return "salary_disciplinary_deduction"
+
+    return ""
+
+
 def build_point_search_queries(
     point: dict[str, Any],
 ) -> list[str]:
@@ -455,34 +529,64 @@ def build_point_search_queries(
         )
 
     search_group = (
-        detect_point_search_group(
-            point
+        detect_specific_wage_deduction_group(point)
+        or detect_point_search_group(point)
+    )
+
+    salary_context = normalize_lookup_text(
+        " ".join(
+            str(point.get(field, ""))
+            for field in ("title", "original_text", "explanation")
         )
     )
 
-    if search_group:
-        expanded_queries = (
-            POINT_SEARCH_QUERIES.get(
-                search_group,
-                [],
-            )
+    salary_increase_intent = any(
+        phrase in salary_context
+        for phrase in (
+            "salary increase",
+            "wage increase",
+            "salary raise",
+            "pay raise",
+            "annual increment",
+            "\u0632\u064a\u0627\u062f\u0629 \u0627\u0644\u0631\u0627\u062a\u0628",
+            "\u0632\u064a\u0627\u062f\u0629 \u0627\u0644\u0623\u062c\u0631",
+            "\u0627\u0644\u0632\u064a\u0627\u062f\u0629 \u0627\u0644\u0633\u0646\u0648\u064a\u0629",
+        )
+    )
+
+    if search_group == "salary" and salary_increase_intent:
+        expanded_queries = [
+            "\u062a\u062d\u062f\u064a\u062f \u0623\u062c\u0631 \u0627\u0644\u0639\u0627\u0645\u0644",
+            "\u0632\u064a\u0627\u062f\u0629 \u0627\u0644\u0623\u062c\u0631",
+            "\u0627\u0644\u0623\u062c\u0631 \u0627\u0644\u0645\u062a\u0641\u0642 \u0639\u0644\u064a\u0647",
+        ]
+    elif search_group == "salary":
+        expanded_queries = [
+            "\u0623\u062f\u0627\u0621 \u0627\u0644\u0623\u062c\u0648\u0631",
+            "\u0645\u0648\u0639\u062f \u062f\u0641\u0639 \u0627\u0644\u0623\u062c\u0631",
+            "\u062f\u0641\u0639 \u0627\u0644\u0623\u062c\u0648\u0631",
+        ]
+    elif search_group == "salary_loan_deduction":
+        expanded_queries = [
+            "\u0627\u0642\u062a\u0637\u0627\u0639 \u0645\u0646 \u0623\u062c\u0631 \u0627\u0644\u0639\u0627\u0645\u0644 \u0644\u0633\u062f\u0627\u062f \u0642\u0631\u0636"
+        ]
+    elif search_group == "salary_disciplinary_deduction":
+        expanded_queries = [
+            "\u0627\u0644\u062e\u0635\u0645 \u0645\u0646 \u0627\u0644\u0623\u062c\u0631 \u0643\u062c\u0632\u0627\u0621 \u062a\u0623\u062f\u064a\u0628\u064a"
+        ]
+    else:
+        expanded_queries = POINT_SEARCH_QUERIES.get(
+            search_group, []
         )
 
+    if search_group:
         for query in expanded_queries:
-            clean_query = str(
-                query
-            ).strip()
-
-            if (
-                clean_query
-                and clean_query
-                not in queries
-            ):
-                queries.append(
-                    clean_query
-                )
+            clean_query = str(query).strip()
+            if clean_query and clean_query not in queries:
+                queries.append(clean_query)
 
     return queries
+
 
 
 def retrieve_laws_for_point(
@@ -650,9 +754,126 @@ def retrieve_laws_for_point(
         reverse=True,
     )
 
-    selected_regulations = (
-        ranked_candidates[:limit]
+    salary_point_text = normalize_lookup_text(
+        " ".join(
+            str(point.get(field, ""))
+            for field in ("title", "original_text", "explanation")
+        )
     )
+
+    payment_intent = any(
+        phrase in salary_point_text
+        for phrase in (
+            "pay the employee",
+            "pay employees",
+            "pay wages",
+            "pay salary",
+            "salary payment",
+            "wage payment",
+            "salary on time",
+            "wages on time",
+            "salary is paid",
+            "wages are paid",
+            "\u062f\u0641\u0639 \u0627\u0644\u0631\u0627\u062a\u0628",
+            "\u062f\u0641\u0639 \u0627\u0644\u0623\u062c\u0631",
+            "\u0635\u0631\u0641 \u0627\u0644\u0631\u0627\u062a\u0628",
+            "\u0645\u0648\u0639\u062f \u0627\u0644\u0631\u0627\u062a\u0628",
+            "\u062a\u0623\u062e\u064a\u0631 \u0627\u0644\u0631\u0627\u062a\u0628",
+        )
+    )
+
+    if (
+        payment_intent
+        and detect_specific_wage_deduction_group(point) == ""
+        and detect_point_search_group(point) == "salary"
+    ):
+        payment_phrases = [
+            "\u062a\u0624\u062f\u0649 \u0627\u0644\u0623\u062c\u0648\u0631",
+            "\u0645\u0648\u0639\u062f \u0623\u062f\u0627\u0626\u0647",
+            "\u0623\u062c\u0648\u0631 \u0627\u0644\u0639\u0645\u0627\u0644",
+            "\u0645\u0631\u0629 \u0639\u0644\u0649 \u0627\u0644\u0623\u0642\u0644 \u0641\u064a \u0627\u0644\u0634\u0647\u0631",
+        ]
+
+        payment_candidates = []
+
+        for item in ranked_candidates:
+            if str(item.get("category", "")).strip().lower() != "labour":
+                continue
+
+            content = normalize_lookup_text(
+                str(item.get("text") or "")
+            )
+
+            matches = sum(
+                normalize_lookup_text(phrase) in content
+                for phrase in payment_phrases
+            )
+
+            if matches:
+                payment_candidates.append((item, matches))
+
+        payment_candidates.sort(
+            key=lambda row: (
+                row[1],
+                get_regulation_score(row[0]),
+            ),
+            reverse=True,
+        )
+
+        selected_regulations = [
+            item for item, _ in payment_candidates[:limit]
+        ]
+    elif (
+        detect_point_search_group(point) == "salary"
+        and any(
+            phrase in salary_point_text
+            for phrase in (
+                "salary increase",
+                "wage increase",
+                "salary raise",
+                "pay raise",
+                "annual increment",
+                "\u0632\u064a\u0627\u062f\u0629 \u0627\u0644\u0631\u0627\u062a\u0628",
+                "\u0632\u064a\u0627\u062f\u0629 \u0627\u0644\u0623\u062c\u0631",
+            )
+        )
+    ):
+        wage_setting_phrases = [
+            "\u064a\u062d\u062f\u062f \u0623\u062c\u0631 \u0627\u0644\u0639\u0627\u0645\u0644",
+            "\u0627\u0644\u0623\u062c\u0631 \u0627\u0644\u0645\u062a\u0641\u0642 \u0639\u0644\u064a\u0647",
+        ]
+
+        increase_candidates = []
+
+        for item in ranked_candidates:
+            if str(item.get("category", "")).strip().lower() != "labour":
+                continue
+
+            content = normalize_lookup_text(
+                str(item.get("text") or "")
+            )
+
+            matches = sum(
+                normalize_lookup_text(phrase) in content
+                for phrase in wage_setting_phrases
+            )
+
+            if matches:
+                increase_candidates.append((item, matches))
+
+        increase_candidates.sort(
+            key=lambda row: (
+                row[1],
+                get_regulation_score(row[0]),
+            ),
+            reverse=True,
+        )
+
+        selected_regulations = [
+            item for item, _ in increase_candidates[:limit]
+        ]
+    else:
+        selected_regulations = ranked_candidates[:limit]
 
 
     return {
@@ -688,20 +909,42 @@ def retrieve_laws_for_points(
             )
         )
 
-    from core_agents.graph import evidence_check_agent
+    from core_agents.graph import (
+        evidence_check_agent,
+        evidence_quality_agent,
+    )
 
     for item in results:
         regulations = item.get("regulations", [])
 
-        agent_result = evidence_check_agent({
+        state = {
             "query": item.get("search_query", ""),
             "evidence": regulations,
             "search_attempts": 2,
-        })
+        }
+
+        quality_result = evidence_quality_agent(state)
+
+        checked_state = {
+            **state,
+            **quality_result,
+        }
+
+        agent_result = evidence_check_agent(checked_state)
 
         item["legal_research_agent"] = {
             "decision": agent_result.get("decision"),
             "evidence_status": agent_result.get("evidence_status"),
+            "quality_status": quality_result.get("quality_status"),
+            "accepted_evidence_count": len(
+                quality_result.get("evidence", [])
+            ),
+            "related_evidence_count": len(
+                quality_result.get("related_evidence", [])
+            ),
+            "rejected_evidence_count": len(
+                quality_result.get("rejected_evidence", [])
+            ),
         }
 
     return results
@@ -1308,6 +1551,37 @@ def validate_legal_analysis(
             "requirements."
         )
 
+    # Never expose an unverified AI legal conclusion as fact.
+    if status == "NOT VERIFIED":
+        if unsupported_citations:
+            explanation = (
+                "The legal assessment could not be verified "
+                "because one or more cited provisions were "
+                "not found in the trusted retrieved sources. "
+                "No legal violation or compliance conclusion "
+                "has been established."
+            )
+        elif unverified_articles:
+            explanation = (
+                "The cited legal provisions have not been "
+                "independently verified as currently effective. "
+                "No legal violation or compliance conclusion "
+                "has been established."
+            )
+        else:
+            explanation = (
+                "The available verified legal evidence is "
+                "insufficient to establish whether this "
+                "document point complies with applicable law."
+            )
+
+        recommendation = (
+            "Obtain qualified legal review of the document "
+            "point and verify applicable legislation, "
+            "amendments, and supporting facts before "
+            "making legal or compliance decisions."
+        )
+
     return {
         "status": status,
         "explanation": explanation,
@@ -1535,6 +1809,10 @@ def build_batch_item(
         "batch_index": batch_index,
         "point": point,
         "legal_sources": legal_sources,
+        "legal_research_agent": item.get(
+            "legal_research_agent",
+            {},
+        ),
     }
 
 
@@ -1754,6 +2032,65 @@ def validate_batch_results(
                 legal_sources=legal_sources,
             )
         )
+
+        research_agent = batch_item.get(
+            "legal_research_agent",
+            {},
+        )
+
+        if isinstance(research_agent, dict):
+            research_decision = str(
+                research_agent.get("decision", "")
+            ).strip().upper()
+        else:
+            research_decision = ""
+
+        # Re-check legal currency against the independent local registry.
+        # Batch-supplied decisions and source statuses are not authorization.
+        from services.legal_retriever import load_verification_registry
+
+        trusted_registry = load_verification_registry()
+        registry_authorized = bool(legal_sources)
+
+        for source in legal_sources:
+            source_id = str(source.get("source_id") or "").strip()
+            trusted = trusted_registry.get(source_id)
+
+            if (
+                not source_id
+                or not isinstance(trusted, dict)
+                or trusted.get("status") != "verified_current"
+                or trusted.get("verified_current") is not True
+                or not isinstance(trusted.get("evidence_count"), int)
+                or isinstance(trusted.get("evidence_count"), bool)
+                or trusted.get("evidence_count") < 1
+                or not trusted.get("reviewed_at")
+                or not trusted.get("reviewed_by")
+                or str(source.get("effective_status", "")).strip().lower()
+                != "verified_current"
+            ):
+                registry_authorized = False
+                break
+
+        if research_decision != "PROCEED" or not registry_authorized:
+            validated_result = {
+                **validated_result,
+                "status": "NOT VERIFIED",
+                "explanation": (
+                    "The legal research evidence has not "
+                    "passed the required topic and "
+                    "verification checks. No legal "
+                    "violation or compliance conclusion "
+                    "has been established."
+                ),
+                "recommendation": (
+                    "Obtain qualified legal review and "
+                    "verify the applicable provisions, "
+                    "their relevance, current legal effect, "
+                    "and supporting facts before making "
+                    "a legal or compliance decision."
+                ),
+            }
 
         validated[
             batch_index
@@ -2110,6 +2447,10 @@ def analyze_legal_points(
                     ),
                     "legal_analysis": (
                         legal_analysis
+                    ),
+                    "legal_research_agent": item.get(
+                        "legal_research_agent",
+                        {},
                     ),
                 }
             )

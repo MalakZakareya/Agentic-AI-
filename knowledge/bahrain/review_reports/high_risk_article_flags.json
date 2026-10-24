@@ -1,0 +1,46 @@
+{
+  "created_at": "2026-10-24T14:00:35.723793",
+  "status": "pending_human_legal_review",
+  "legal_currency_confirmed": false,
+  "automatic_approval": false,
+  "warning_only": true,
+  "items": [
+    {
+      "source_id": "BH-CIVIL-19-2001",
+      "code": "L1901",
+      "articles": [
+        "814",
+        "815",
+        "816",
+        "817",
+        "818",
+        "819"
+      ],
+      "reason": "Articles not located by current heading/text comparison; status unresolved",
+      "official_url": "https://www.lloc.gov.bh/FullAr/L1901.docx"
+    },
+    {
+      "source_id": "BH-COMMERCIAL-7-1987",
+      "code": "L0787",
+      "articles": [
+        "20",
+        "81",
+        "91"
+      ],
+      "reason": "Local text differs from or was not located in consolidated official text",
+      "official_url": "https://www.lloc.gov.bh/FullAr/L0787.docx"
+    },
+    {
+      "source_id": "BH-COMPANIES-21-2001",
+      "code": "L2101",
+      "articles": [
+        "2",
+        "6",
+        "27",
+        "30"
+      ],
+      "reason": "Potential substantive differences in company forms, incorporation language, naming or publication",
+      "official_url": "https://www.lloc.gov.bh/FullAr/L2101.docx"
+    }
+  ]
+}

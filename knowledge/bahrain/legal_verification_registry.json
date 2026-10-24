@@ -1,0 +1,155 @@
+{
+  "schema_version": "1.0",
+  "jurisdiction": "Bahrain",
+  "created_at": "2026-10-22T07:13:47.846266+00:00",
+  "purpose": "Track evidence-based verification of current legal effect. This registry does not itself certify legislation as currently effective.",
+  "sources": [
+    {
+      "source_id": "BH-CIVIL-19-2001",
+      "title": "Bahrain Civil Code",
+      "category": "civil_law",
+      "law_number": "19",
+      "year": "2001",
+      "source_url": "https://www.lloc.gov.bh/Legislation/HTM/L1901",
+      "article_count": 1054,
+      "verification": {
+        "status": "pending_review",
+        "verified_current": false,
+        "reviewed_at": null,
+        "reviewed_by": null,
+        "effective_date": null,
+        "publication_date": null,
+        "amendments": [],
+        "repeal_information": [],
+        "evidence": [],
+        "notes": "Current legal effect and amendments have not been independently verified."
+      }
+    },
+    {
+      "source_id": "BH-COMMERCIAL-7-1987",
+      "title": "Bahrain Commercial Law",
+      "category": "commercial_law",
+      "law_number": "7",
+      "year": "1987",
+      "source_url": "https://www.lloc.gov.bh/Legislation/HTM/L0787",
+      "article_count": 503,
+      "verification": {
+        "status": "pending_review",
+        "verified_current": false,
+        "reviewed_at": null,
+        "reviewed_by": null,
+        "effective_date": null,
+        "publication_date": null,
+        "amendments": [],
+        "repeal_information": [],
+        "evidence": [],
+        "notes": "Current legal effect and amendments have not been independently verified."
+      }
+    },
+    {
+      "source_id": "BH-COMPANIES-21-2001",
+      "title": "Bahrain Commercial Companies Law",
+      "category": "companies_law",
+      "law_number": "21",
+      "year": "2001",
+      "source_url": "https://www.lloc.gov.bh/Legislation/HTM/L2101",
+      "article_count": 363,
+      "verification": {
+        "status": "pending_review",
+        "verified_current": false,
+        "reviewed_at": null,
+        "reviewed_by": null,
+        "effective_date": null,
+        "publication_date": null,
+        "amendments": [],
+        "repeal_information": [],
+        "evidence": [],
+        "notes": "Current legal effect and amendments have not been independently verified."
+      }
+    },
+    {
+      "source_id": "BH-CONSUMER-35-2012",
+      "title": "Bahrain Consumer Protection Law",
+      "category": "consumer_protection",
+      "law_number": "35",
+      "year": "2012",
+      "source_url": "https://www.lloc.gov.bh/Legislation/HTM/K3512",
+      "article_count": 25,
+      "verification": {
+        "status": "pending_review",
+        "verified_current": false,
+        "reviewed_at": null,
+        "reviewed_by": null,
+        "effective_date": null,
+        "publication_date": null,
+        "amendments": [],
+        "repeal_information": [],
+        "evidence": [],
+        "notes": "Current legal effect and amendments have not been independently verified."
+      }
+    },
+    {
+      "source_id": "BH-ELECTRONIC-54-2018",
+      "title": "Bahrain Electronic Communications and Transactions Law",
+      "category": "electronic_transactions",
+      "law_number": "54",
+      "year": "2018",
+      "source_url": "https://www.lloc.gov.bh/Legislation/HTM/L5418",
+      "article_count": 28,
+      "verification": {
+        "status": "pending_review",
+        "verified_current": false,
+        "reviewed_at": null,
+        "reviewed_by": null,
+        "effective_date": null,
+        "publication_date": null,
+        "amendments": [],
+        "repeal_information": [],
+        "evidence": [],
+        "notes": "Current legal effect and amendments have not been independently verified."
+      }
+    },
+    {
+      "source_id": "BH-LABOUR-36-2012",
+      "title": "قانون رقم (36) لسنة 2012 بإصدار قانون العمل في القطاع الأهلي",
+      "category": "labour",
+      "law_number": "36",
+      "year": "2012",
+      "source_url": "https://www.lloc.gov.bh/Legislation/id/K3612",
+      "article_count": 199,
+      "verification": {
+        "status": "pending_review",
+        "verified_current": false,
+        "reviewed_at": null,
+        "reviewed_by": null,
+        "effective_date": null,
+        "publication_date": null,
+        "amendments": [],
+        "repeal_information": [],
+        "evidence": [],
+        "notes": "Current legal effect and amendments have not been independently verified."
+      }
+    },
+    {
+      "source_id": "BH-PDPL-30-2018",
+      "title": "قانون رقم (30) لسنة 2018 بإصدار قانون حماية البيانات الشخصية",
+      "category": "personal_data_protection",
+      "law_number": "30",
+      "year": "2018",
+      "source_url": "https://www.lloc.gov.bh/Legislation/id/K3018",
+      "article_count": 60,
+      "verification": {
+        "status": "pending_review",
+        "verified_current": false,
+        "reviewed_at": null,
+        "reviewed_by": null,
+        "effective_date": null,
+        "publication_date": null,
+        "amendments": [],
+        "repeal_information": [],
+        "evidence": [],
+        "notes": "Current legal effect and amendments have not been independently verified."
+      }
+    }
+  ]
+}

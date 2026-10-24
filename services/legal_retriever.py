@@ -96,7 +96,6 @@ LEGAL_CONCEPTS: dict[str, list[str]] = {
         "salary",
         "pay",
         "payment of salary",
-        "compensation",
         "remuneration",
         "الأجر",
         "الاجر",
@@ -111,7 +110,38 @@ LEGAL_CONCEPTS: dict[str, list[str]] = {
         "المكافآت",
     ],
 
-      "working_hours": [
+      "contract_formation": [
+        "contract formation",
+        "formation of contract",
+        "forming a contract",
+        "\u062a\u0643\u0648\u064a\u0646 \u0627\u0644\u0639\u0642\u062f",
+        "\u0627\u0646\u0639\u0642\u0627\u062f \u0627\u0644\u0639\u0642\u062f",
+        "\u0625\u0628\u0631\u0627\u0645 \u0627\u0644\u0639\u0642\u062f",
+    ],
+
+    "salary_increase": [
+        "salary increase",
+        "wage increase",
+        "salary raise",
+        "pay raise",
+        "annual increment",
+        "\u0632\u064a\u0627\u062f\u0629 \u0627\u0644\u0631\u0627\u062a\u0628",
+        "\u0632\u064a\u0627\u062f\u0629 \u0627\u0644\u0623\u062c\u0631",
+        "\u0627\u0644\u0632\u064a\u0627\u062f\u0629 \u0627\u0644\u0633\u0646\u0648\u064a\u0629",
+    ],
+
+    "legal_compensation": [
+        "compensation",
+        "damages",
+        "compensation for breach",
+        "contractual compensation",
+        "التعويض",
+        "تعويض",
+        "تعويض عن الضرر",
+        "التعويض عن الإخلال",
+    ],
+
+    "working_hours": [
         "working hours",
         "work hours",
         "hours of work",
@@ -422,6 +452,128 @@ def load_regulations() -> list[dict[str, Any]]:
             all_regulations.append(regulation)
 
     return all_regulations
+
+
+
+@lru_cache(maxsize=1)
+
+def load_high_risk_article_flags() -> dict[str, set[str]]:
+    """Load article warnings; malformed data must fail closed."""
+    path = (
+        REGULATIONS_FILE.parent
+        / "review_reports"
+        / "high_risk_article_flags.json"
+    )
+
+    if not path.exists():
+        raise RuntimeError("High-risk article warning file missing")
+
+    try:
+        with path.open("r", encoding="utf-8") as handle:
+            data = json.load(handle)
+
+        if (
+            data.get("warning_only") is not True
+            or data.get("legal_currency_confirmed") is not False
+            or data.get("automatic_approval") is not False
+            or data.get("status") != "pending_human_legal_review"
+            or not isinstance(data.get("items"), list)
+        ):
+            raise ValueError("Invalid warning report")
+
+        result: dict[str, set[str]] = {}
+
+        for item in data["items"]:
+            if not isinstance(item, dict):
+                raise ValueError("Invalid warning entry")
+
+            source_id = item.get("source_id")
+            articles = item.get("articles")
+
+            if (
+                not isinstance(source_id, str)
+                or not source_id
+                or not isinstance(articles, list)
+            ):
+                raise ValueError("Invalid warning fields")
+
+            result.setdefault(source_id, set()).update(
+                str(article).strip()
+                for article in articles
+            )
+
+        return result
+
+    except (OSError, ValueError, TypeError) as exc:
+        raise RuntimeError(
+            "High-risk article warnings cannot be validated"
+        ) from exc
+
+
+def article_requires_human_review(
+    regulation: dict[str, Any],
+    flags: dict[str, set[str]],
+) -> bool:
+    """Match warnings by trusted source and article number."""
+    source_id = str(regulation.get("source_id") or "").strip()
+    article = str(
+        regulation.get("article_number")
+        or regulation.get("article")
+        or ""
+    ).strip()
+
+    return article in flags.get(source_id, set())
+
+
+def load_verification_registry() -> dict[str, dict[str, Any]]:
+    """Load source review metadata without granting legal validity."""
+    registry_path = (
+        REGULATIONS_FILE.parent
+        / "legal_verification_registry.json"
+    )
+
+    if not registry_path.exists():
+        return {}
+
+    try:
+        with registry_path.open("r", encoding="utf-8") as handle:
+            data = json.load(handle)
+
+        sources = data.get("sources", [])
+        if not isinstance(sources, list):
+            return {}
+
+        result: dict[str, dict[str, Any]] = {}
+
+        for source in sources:
+            if not isinstance(source, dict):
+                continue
+
+            source_id = str(source.get("source_id") or "").strip()
+            verification = source.get("verification", {})
+
+            if not source_id or not isinstance(verification, dict):
+                continue
+
+            # A registry entry cannot independently authorize legal validity.
+            result[source_id] = {
+                "status": str(
+                    verification.get("status") or "pending_review"
+                ),
+                "verified_current": False,
+                "reviewed_at": verification.get("reviewed_at"),
+                "reviewed_by": verification.get("reviewed_by"),
+                "evidence_count": len(
+                    verification.get("evidence", [])
+                ) if isinstance(verification.get("evidence"), list) else 0,
+            }
+
+        return result
+
+    except (OSError, ValueError, TypeError, AttributeError):
+        return {}
+
+
 
 
 
@@ -1140,6 +1292,7 @@ def search_regulations(
     if not query.strip():
         return []
 
+    high_risk_flags = load_high_risk_article_flags()
     regulations = load_regulations()
 
     results: list[
@@ -1163,6 +1316,39 @@ def search_regulations(
             continue
 
         result = regulation.copy()
+        result["requires_human_review"] = (
+            article_requires_human_review(
+                result,
+                high_risk_flags,
+            )
+        )
+
+        if result["requires_human_review"]:
+            result["legal_article_warning"] = (
+                "Official consolidated text mismatch or "
+                "unresolved article status; human legal review required."
+            )
+            result["effective_status"] = "unverified"
+
+
+        source_id = str(
+            result.get("source_id") or ""
+        ).strip()
+
+        registry_entry = load_verification_registry().get(
+            source_id,
+            {},
+        )
+
+        result["verification_registry"] = (
+            registry_entry.copy()
+            if registry_entry
+            else {
+                "status": "registry_missing",
+                "verified_current": False,
+                "evidence_count": 0,
+            }
+        )
 
         result[
             "relevance_score"
@@ -1176,14 +1362,88 @@ def search_regulations(
             result
         )
 
-    results.sort(
-        key=lambda item: int(
-            item.get(
-                "relevance_score",
-                0,
-            )
-        ),
-        reverse=True,
+    # Secondary ranking for commercial contract disputes.
+    # This changes relevance ranking only, not legal validity.
+    query_normalized = normalize_text(query)
+
+    dispute_signals = [
+        "dispute",
+        "breach",
+        "termination",
+        "\u0646\u0632\u0627\u0639",
+        "\u0645\u0646\u0627\u0632\u0639\u0629",
+        "\u0625\u062e\u0644\u0627\u0644",
+        "\u0641\u0633\u062e",
+    ]
+
+    is_commercial_dispute = (
+        (
+            "commercial" in query_normalized
+            or "\u062a\u062c\u0627\u0631" in query_normalized
+        )
+        and any(
+            normalize_text(term) in query_normalized
+            for term in dispute_signals
+        )
     )
+
+    dispute_phrases = [
+        "\u0637\u0644\u0628 \u0627\u0644\u0641\u0633\u062e",
+        "\u0627\u0644\u0641\u0633\u062e \u0648\u0627\u0644\u062a\u0639\u0648\u064a\u0636",
+        "\u0627\u0644\u0645\u0637\u0627\u0644\u0628\u0629 \u0628\u062a\u0639\u0648\u064a\u0636",
+        "\u0627\u0644\u062a\u0623\u062e\u064a\u0631 \u0641\u064a \u0627\u0644\u0648\u0641\u0627\u0621",
+        "\u0627\u0644\u0625\u062e\u0644\u0627\u0644 \u0628\u0627\u0644\u0627\u0644\u062a\u0632\u0627\u0645",
+    ]
+
+    def ranking_key(item: dict[str, Any]) -> int:
+        score = int(item.get("relevance_score", 0))
+
+        if (
+            is_commercial_dispute
+            and item.get("category") == "commercial_law"
+        ):
+            article_text = normalize_text(
+                str(item.get("text", ""))
+            )
+
+            phrase_matches = sum(
+                normalize_text(phrase) in article_text
+                for phrase in dispute_phrases
+            )
+
+            score += min(phrase_matches, 2) * 12
+
+        return score
+
+    if "contract_formation" in detected_concepts:
+        formation_phrases = (
+            "\u064a\u0646\u0639\u0642\u062f \u0627\u0644\u0639\u0642\u062f",
+            "\u0644\u0627\u0646\u0639\u0642\u0627\u062f \u0627\u0644\u0639\u0642\u062f",
+            "\u0627\u0644\u0625\u064a\u062c\u0627\u0628 \u0628\u0627\u0644\u0642\u0628\u0648\u0644",
+            "\u0627\u0644\u0642\u0628\u0648\u0644 \u0645\u0637\u0627\u0628\u0642\u0627",
+        )
+
+        def formation_bonus(item: dict[str, Any]) -> int:
+            article_text = normalize_text(
+                str(item.get("text") or "")
+            )
+            return 30 * sum(
+                bool(normalize_text(phrase))
+                and normalize_text(phrase) in article_text
+                for phrase in formation_phrases
+            )
+
+        results.sort(
+            key=lambda item: (
+                formation_bonus(item),
+                ranking_key(item),
+            ),
+            reverse=True,
+        )
+    else:
+        results.sort(
+            key=ranking_key,
+            reverse=True,
+        )
 
     return results[:limit]

@@ -1,0 +1,410 @@
+{
+  "schema_version": "1.0",
+  "jurisdiction": "Bahrain",
+  "purpose": "Manual legal source evidence review",
+  "created_at": "2026-10-22T08:10:47.321146+00:00",
+  "automatic_approval_allowed": false,
+  "sources": [
+    {
+      "source_id": "BH-CIVIL-19-2001",
+      "title": "Bahrain Civil Code",
+      "law_number": "19",
+      "year": "2001",
+      "reference_url": "https://www.lloc.gov.bh/Legislation/HTM/L1901",
+      "review_status": "pending_review",
+      "publication_date": null,
+      "effective_date": null,
+      "official_gazette_reference": null,
+      "original_law_evidence": [],
+      "amendment_evidence": [],
+      "repeal_evidence": [],
+      "consolidated_text_evidence": [],
+      "amendment_search_completed": false,
+      "repeal_search_completed": false,
+      "reviewed_at": null,
+      "reviewed_by": null,
+      "review_notes": "",
+      "verified_current": false,
+      "official_evidence_review": {
+        "status": "pending_human_review",
+        "original_law": {
+          "code": "L1901",
+          "publication_date": "2001-05-09",
+          "gazette_number": "2476",
+          "official_url": "https://www.lloc.gov.bh/Legislation/id/L1901",
+          "official_text_url": "https://www.lloc.gov.bh/Legislation/HTM/L1901"
+        },
+        "amendment_inventory": {
+          "status": "unavailable",
+          "codes": [],
+          "official_listing_url": "https://www.lloc.gov.bh/Legislation/Amendments/L1901",
+          "legally_confirmed_complete": false
+        },
+        "consolidated_text_url": "https://www.lloc.gov.bh/FullAr/L1901.docx",
+        "commencement_review_completed": false,
+        "repeal_search_completed": false,
+        "legal_currency_confirmed": false,
+        "human_legal_review_required": true
+      }
+    },
+    {
+      "source_id": "BH-COMMERCIAL-7-1987",
+      "title": "Bahrain Commercial Law",
+      "law_number": "7",
+      "year": "1987",
+      "reference_url": "https://www.lloc.gov.bh/Legislation/HTM/L0787",
+      "review_status": "pending_review",
+      "publication_date": null,
+      "effective_date": null,
+      "official_gazette_reference": null,
+      "original_law_evidence": [],
+      "amendment_evidence": [],
+      "repeal_evidence": [],
+      "consolidated_text_evidence": [],
+      "amendment_search_completed": false,
+      "repeal_search_completed": false,
+      "reviewed_at": null,
+      "reviewed_by": null,
+      "review_notes": "",
+      "verified_current": false,
+      "official_evidence_review": {
+        "status": "pending_human_review",
+        "original_law": {
+          "code": "L0787",
+          "publication_date": "1987-03-26",
+          "gazette_number": "1739",
+          "official_url": "https://www.lloc.gov.bh/Legislation/id/L0787",
+          "official_text_url": "https://www.lloc.gov.bh/Legislation/HTM/L0787"
+        },
+        "amendment_inventory": {
+          "status": "observed_5_of_5",
+          "codes": [
+            "K2325",
+            "L0492",
+            "L1393",
+            "L1591",
+            "L5118"
+          ],
+          "official_listing_url": "https://www.lloc.gov.bh/Legislation/Amendments/L0787",
+          "legally_confirmed_complete": false
+        },
+        "consolidated_text_url": "https://www.lloc.gov.bh/FullAr/L0787.docx",
+        "commencement_review_completed": false,
+        "repeal_search_completed": false,
+        "legal_currency_confirmed": false,
+        "human_legal_review_required": true
+      }
+    },
+    {
+      "source_id": "BH-COMPANIES-21-2001",
+      "title": "Bahrain Commercial Companies Law",
+      "law_number": "21",
+      "year": "2001",
+      "reference_url": "https://www.lloc.gov.bh/Legislation/HTM/L2101",
+      "review_status": "pending_review",
+      "publication_date": null,
+      "effective_date": null,
+      "official_gazette_reference": null,
+      "original_law_evidence": [],
+      "amendment_evidence": [],
+      "repeal_evidence": [],
+      "consolidated_text_evidence": [],
+      "amendment_search_completed": false,
+      "repeal_search_completed": false,
+      "reviewed_at": null,
+      "reviewed_by": null,
+      "review_notes": "",
+      "verified_current": false,
+      "official_evidence_review": {
+        "status": "pending_human_review",
+        "original_law": {
+          "code": "L2101",
+          "publication_date": "2001-06-20",
+          "gazette_number": "2482",
+          "official_url": "https://www.lloc.gov.bh/Legislation/id/L2101",
+          "official_text_url": "https://www.lloc.gov.bh/Legislation/HTM/L2101"
+        },
+        "amendment_inventory": {
+          "status": "observed_8_of_8",
+          "codes": [
+            "K0118",
+            "K0620",
+            "K5014",
+            "L2021",
+            "L2815",
+            "L2820",
+            "L3825",
+            "L5318"
+          ],
+          "official_listing_url": "https://www.lloc.gov.bh/Legislation/Amendments/L2101",
+          "legally_confirmed_complete": false
+        },
+        "consolidated_text_url": "https://www.lloc.gov.bh/FullAr/L2101.docx",
+        "commencement_review_completed": false,
+        "repeal_search_completed": false,
+        "legal_currency_confirmed": false,
+        "human_legal_review_required": true
+      }
+    },
+    {
+      "source_id": "BH-CONSUMER-35-2012",
+      "title": "Bahrain Consumer Protection Law",
+      "law_number": "35",
+      "year": "2012",
+      "reference_url": "https://www.lloc.gov.bh/Legislation/HTM/K3512",
+      "review_status": "pending_review",
+      "publication_date": null,
+      "effective_date": null,
+      "official_gazette_reference": null,
+      "original_law_evidence": [],
+      "amendment_evidence": [],
+      "repeal_evidence": [],
+      "consolidated_text_evidence": [],
+      "amendment_search_completed": false,
+      "repeal_search_completed": false,
+      "reviewed_at": null,
+      "reviewed_by": null,
+      "review_notes": "",
+      "verified_current": false,
+      "official_evidence_review": {
+        "status": "pending_human_review",
+        "original_law": {
+          "code": "K3512",
+          "publication_date": "2012-08-02",
+          "gazette_number": "3063",
+          "commencement_date_candidate": "2012-08-03",
+          "official_url": "https://www.lloc.gov.bh/Legislation/id/K3512",
+          "official_text_url": "https://www.lloc.gov.bh/Legislation/HTM/K3512"
+        },
+        "amendments_observed": [
+          {
+            "code": "K2826",
+            "publication_date": "2026-06-18",
+            "gazette_number": "3889",
+            "commencement_date_candidate": "2026-06-19",
+            "official_url": "https://www.lloc.gov.bh/Legislation/id/K2826",
+            "official_text_url": "https://www.lloc.gov.bh/Legislation/HTM/K2826",
+            "affected_provisions": [
+              "Article 1 definition",
+              "Article 5(c)",
+              "Article 8(a)(1)",
+              "Article 11 bis",
+              "Article 22 first paragraph",
+              "Article 23"
+            ]
+          }
+        ],
+        "consolidated_text_url": "https://www.lloc.gov.bh/FullAr/K3512.docx",
+        "amendment_completeness_confirmed": false,
+        "repeal_search_completed": false,
+        "legal_currency_confirmed": false,
+        "human_legal_review_required": true
+      }
+    },
+    {
+      "source_id": "BH-ELECTRONIC-54-2018",
+      "title": "Bahrain Electronic Communications and Transactions Law",
+      "law_number": "54",
+      "year": "2018",
+      "reference_url": "https://www.lloc.gov.bh/Legislation/HTM/L5418",
+      "review_status": "pending_review",
+      "publication_date": null,
+      "effective_date": null,
+      "official_gazette_reference": null,
+      "original_law_evidence": [],
+      "amendment_evidence": [],
+      "repeal_evidence": [],
+      "consolidated_text_evidence": [],
+      "amendment_search_completed": false,
+      "repeal_search_completed": false,
+      "reviewed_at": null,
+      "reviewed_by": null,
+      "review_notes": "",
+      "verified_current": false,
+      "official_evidence_review": {
+        "status": "pending_human_review",
+        "original_law": {
+          "code": "L5418",
+          "publication_date": "2018-11-29",
+          "gazette_number": "3395",
+          "official_url": "https://www.lloc.gov.bh/Legislation/id/L5418",
+          "official_text_url": "https://www.lloc.gov.bh/Legislation/HTM/L5418"
+        },
+        "amendment_inventory": {
+          "status": "observed_1_of_1",
+          "codes": [
+            "K2921"
+          ],
+          "official_listing_url": "https://www.lloc.gov.bh/Legislation/Amendments/L5418",
+          "legally_confirmed_complete": false
+        },
+        "consolidated_text_url": "https://www.lloc.gov.bh/FullAr/L5418.docx",
+        "commencement_review_completed": false,
+        "repeal_search_completed": false,
+        "legal_currency_confirmed": false,
+        "human_legal_review_required": true
+      }
+    },
+    {
+      "source_id": "BH-LABOUR-36-2012",
+      "title": "قانون رقم (36) لسنة 2012 بإصدار قانون العمل في القطاع الأهلي",
+      "law_number": "36",
+      "year": "2012",
+      "reference_url": "https://www.lloc.gov.bh/Legislation/id/K3612",
+      "review_status": "pending_review",
+      "publication_date": null,
+      "effective_date": null,
+      "official_gazette_reference": null,
+      "original_law_evidence": [],
+      "amendment_evidence": [],
+      "repeal_evidence": [],
+      "consolidated_text_evidence": [],
+      "amendment_search_completed": false,
+      "repeal_search_completed": false,
+      "reviewed_at": null,
+      "reviewed_by": null,
+      "review_notes": "",
+      "verified_current": false,
+      "gazette_evidence_review": {
+        "status": "pending_human_review",
+        "evidence_records": [
+          {
+            "legislation": "36/2012",
+            "gazette_number": "3063",
+            "publication_date": "2012-08-02",
+            "commencement_date_candidate": "2012-09-02",
+            "commencement_review_required": true,
+            "pdf_url": "https://www.lloc.gov.bh/PDF/K3612.pdf",
+            "sha256": "6dd7bd9046fa33e428e0f9d350d051e7a07ab9f19f98251936d57c306fedf6f0",
+            "commencement_clause_review": {
+              "official_html_url": "https://www.lloc.gov.bh/Legislation/HTM/K3612",
+              "commencement_rule": "after one month from official gazette publication",
+              "publication_date": "2012-08-02",
+              "commencement_date_candidate": "2012-09-02",
+              "source_text_observed": true,
+              "human_legal_review_required": true,
+              "legally_approved": false
+            }
+          },
+          {
+            "legislation": "31/2014",
+            "gazette_number": "3171",
+            "publication_date": "2014-08-28",
+            "commencement_date_candidate": "2014-08-29",
+            "commencement_review_required": true,
+            "pdf_url": "https://www.lloc.gov.bh/PDF/K3114.pdf",
+            "sha256": "b81963d3e28ceaa907e4416f0fbc44e2c6b4a91577b9a6f26f8b02b685ccf0da",
+            "commencement_clause_review": {
+              "official_html_url": "https://www.lloc.gov.bh/Legislation/HTM/K3114",
+              "commencement_rule": "day following official gazette publication",
+              "publication_date": "2014-08-28",
+              "commencement_date_candidate": "2014-08-29",
+              "source_text_observed": true,
+              "human_legal_review_required": true,
+              "legally_approved": false
+            }
+          },
+          {
+            "legislation": "37/2015",
+            "gazette_number": "3242",
+            "publication_date": "2015-12-31",
+            "commencement_date_candidate": "2016-01-01",
+            "commencement_review_required": true,
+            "pdf_url": "https://www.lloc.gov.bh/PDF/K3715.pdf",
+            "sha256": "e36f1db5dc70b22e0455771718ffe7e8ac0d6e8018c8475f0199630c8669a074",
+            "commencement_clause_review": {
+              "official_html_url": "https://www.lloc.gov.bh/Legislation/HTM/K3715",
+              "commencement_rule": "day following official gazette publication",
+              "publication_date": "2015-12-31",
+              "commencement_date_candidate": "2016-01-01",
+              "source_text_observed": true,
+              "human_legal_review_required": true,
+              "legally_approved": false
+            }
+          },
+          {
+            "legislation": "59/2018",
+            "gazette_number": "3395",
+            "publication_date": "2018-11-29",
+            "commencement_date_candidate": "2018-11-30",
+            "commencement_review_required": true,
+            "pdf_url": "https://www.lloc.gov.bh/PDF/L5918.pdf",
+            "sha256": "ca9fac9de362d64d27cf5a3618022d48ed2040c96e4d7d61fb99a1ef9b999e2c",
+            "commencement_clause_review": {
+              "official_html_url": "https://www.lloc.gov.bh/Legislation/HTM/L5918",
+              "commencement_rule": "day following official gazette publication",
+              "publication_date": "2018-11-29",
+              "commencement_date_candidate": "2018-11-30",
+              "source_text_observed": true,
+              "human_legal_review_required": true,
+              "legally_approved": false
+            }
+          },
+          {
+            "legislation": "16/2021",
+            "gazette_number": "3544",
+            "publication_date": "2021-08-05",
+            "commencement_date_candidate": "2021-08-06",
+            "commencement_review_required": true,
+            "pdf_url": "https://www.lloc.gov.bh/PDF/L1621.pdf",
+            "sha256": "e9052cdbe4bfbb6ea00ecfed3997646aa29000d73cf46896532a1ca2e7e18d23",
+            "commencement_clause_review": {
+              "official_html_url": "https://www.lloc.gov.bh/Legislation/HTM/L1621",
+              "commencement_rule": "day following official gazette publication",
+              "publication_date": "2021-08-05",
+              "commencement_date_candidate": "2021-08-06",
+              "source_text_observed": true,
+              "human_legal_review_required": true,
+              "legally_approved": false
+            }
+          }
+        ],
+        "consolidated_text_url": "https://www.lloc.gov.bh/FullAr/K3612.docx",
+        "local_article_match_count": 199,
+        "local_article_total": 199,
+        "text_comparison_method": "normalized_substring",
+        "legal_currency_confirmed": false,
+        "notes": "Publication and commencement evidence collected. Original commencement date and amendment completeness require independent review. No automatic approval.",
+        "commencement_clauses_collected": 5,
+        "commencement_review_status": "pending_human_review"
+      }
+    },
+    {
+      "source_id": "BH-PDPL-30-2018",
+      "title": "قانون رقم (30) لسنة 2018 بإصدار قانون حماية البيانات الشخصية",
+      "law_number": "30",
+      "year": "2018",
+      "reference_url": "https://www.lloc.gov.bh/Legislation/id/K3018",
+      "review_status": "pending_review",
+      "publication_date": null,
+      "effective_date": null,
+      "official_gazette_reference": null,
+      "original_law_evidence": [],
+      "amendment_evidence": [],
+      "repeal_evidence": [],
+      "consolidated_text_evidence": [],
+      "amendment_search_completed": false,
+      "repeal_search_completed": false,
+      "reviewed_at": null,
+      "reviewed_by": null,
+      "review_notes": "",
+      "verified_current": false,
+      "official_evidence_review": {
+        "status": "pending_human_review",
+        "original_law": {
+          "code": "K3018",
+          "publication_date": "2018-07-19",
+          "gazette_number": "3375",
+          "commencement_date_candidate": "2019-08-01",
+          "official_url": "https://www.lloc.gov.bh/Legislation/id/K3018",
+          "official_text_url": "https://www.lloc.gov.bh/Legislation/HTM/K3018"
+        },
+        "consolidated_text_url": "https://www.lloc.gov.bh/FullAr/K3018.docx",
+        "amendment_completeness_confirmed": false,
+        "repeal_search_completed": false,
+        "legal_currency_confirmed": false,
+        "human_legal_review_required": true
+      }
+    }
+  ]
+}

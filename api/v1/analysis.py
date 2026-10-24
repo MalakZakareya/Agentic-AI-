@@ -275,47 +275,77 @@ async def analyze_document(
         )
 
 
-        # Summarize legal research verification status.
-        agent_results = [
-            item.get("legal_research_agent")
-            for item in legal_retrieval
-            if isinstance(item, dict)
-        ]
+        # Preserve the actual reason for each legal research decision.
+        review_details = []
 
-        agent_results = [
-            item for item in agent_results
-            if isinstance(item, dict)
-        ]
-
-        requires_review = (
-            bool(legal_retrieval)
-            and (
-                len(agent_results) != len(legal_retrieval)
-                or any(
-                    item.get("decision") != "PROCEED"
-                    or item.get("evidence_status") != "VERIFIED_CURRENT"
-                    for item in agent_results
-                )
+        for index, item in enumerate(legal_retrieval):
+            agent = (
+                item.get("legal_research_agent", {})
+                if isinstance(item, dict)
+                else {}
             )
-        )
 
-        if not legal_retrieval:
+            if not isinstance(agent, dict):
+                agent = {}
+
+            decision = str(
+                agent.get("decision") or "HUMAN_REVIEW"
+            ).strip().upper()
+
+            raw_status = str(
+                agent.get("evidence_status")
+                or agent.get("quality_status")
+                or "NOT_ASSESSED"
+            ).strip().upper()
+
+            if decision != "PROCEED" and raw_status == "VERIFIED_CURRENT":
+                raw_status = "REQUIRES_VERIFICATION"
+
+            review_details.append({
+                "point_index": index,
+                "decision": decision,
+                "evidence_status": raw_status,
+                "quality_status": agent.get("quality_status"),
+                "accepted_evidence_count": agent.get(
+                    "accepted_evidence_count", 0
+                ),
+                "related_evidence_count": agent.get(
+                    "related_evidence_count", 0
+                ),
+                "rejected_evidence_count": agent.get(
+                    "rejected_evidence_count", 0
+                ),
+            })
+
+        review_reasons = sorted({
+            detail["evidence_status"]
+            for detail in review_details
+            if detail["decision"] != "PROCEED"
+            or detail["evidence_status"] != "VERIFIED_CURRENT"
+        })
+
+        if not review_details:
             review_status = "NOT_ASSESSED"
             evidence_status = "NOT_ASSESSED"
             review_message = "No legal research evidence was assessed."
-        elif requires_review:
+        elif review_reasons:
             review_status = "HUMAN_REVIEW"
-            evidence_status = "REQUIRES_VERIFICATION"
+            evidence_status = (
+                review_reasons[0]
+                if len(review_reasons) == 1
+                else "MULTIPLE_REVIEW_REASONS"
+            )
             review_message = (
-                "Human legal review required. Legal sources "
-                "have not been confirmed as currently in force."
+                "Human legal review required. Research evidence "
+                "did not pass all topic and current-law checks. "
+                "See point-level review details for the reasons."
             )
         else:
             review_status = "VERIFIED_CURRENT"
             evidence_status = "VERIFIED_CURRENT"
             review_message = (
                 "All assessed legal sources passed the recorded "
-                "current-law verification status check. "
+                "topic and current-law verification checks. "
                 "This does not establish document compliance."
             )
 
@@ -323,6 +353,8 @@ async def analyze_document(
             "status": review_status,
             "evidence_status": evidence_status,
             "message": review_message,
+            "review_reasons": review_reasons,
+            "points": review_details,
         }
 
         response = {
