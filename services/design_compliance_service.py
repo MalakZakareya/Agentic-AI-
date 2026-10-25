@@ -495,6 +495,82 @@ def validate_compliance_results(
         if status not in ALLOWED_STATUSES:
             status = "NOT VERIFIED"
 
+
+        # Safety guard used in real AI and test workflows.
+        # A visual design alone cannot establish hidden behavior.
+        requirement_text = str(
+            trusted_requirement.get("text", "")
+        ).strip()
+
+        evidence = observed_evidence.strip()
+        evidence_normalized = evidence.casefold()
+
+        unverifiable_evidence = {
+            "",
+            "none",
+            "n/a",
+            "not visible",
+            "not observed",
+            "not provided",
+            "unknown",
+            "no evidence",
+            "insufficient evidence",
+        }
+
+        informational_titles = {
+            "introduction",
+            "scope",
+            "objective",
+            "objectives",
+            "definitions",
+            "references",
+            "background",
+            "purpose",
+        }
+
+        title_normalized = trusted_title.strip().casefold()
+
+        informational_section = (
+            title_normalized in informational_titles
+        )
+
+        # Avoid declaring a violation from a section that
+        # has no actionable requirement language.
+        actionable_terms = (
+            "must", "shall", "required", "mandatory",
+            "should", "ensure", "provide", "display",
+            "include", "use", "avoid", "do not",
+            "recommended", "recommendation",
+        )
+
+        has_actionable_text = any(
+            term in requirement_text.casefold()
+            for term in actionable_terms
+        )
+
+        if status in {"ISSUE", "PASS"}:
+            if (
+                evidence_normalized in unverifiable_evidence
+                or informational_section
+                or not has_actionable_text
+            ):
+                status = "NOT VERIFIED"
+
+        # Recommendations and guidelines must not be
+        # represented as confirmed mandatory violations.
+        mandatory_terms = (
+            "must", "shall", "mandatory", "required",
+            "prohibited", "shall not", "must not",
+        )
+
+        mandatory = any(
+            term in requirement_text.casefold()
+            for term in mandatory_terms
+        )
+
+        if status == "ISSUE" and not mandatory:
+            status = "WARNING"
+
         source_url = (
             get_requirement_source_url(
                 trusted_requirement

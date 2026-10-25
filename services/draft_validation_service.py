@@ -290,9 +290,9 @@ def validate_used_requirements(
             )
         ).strip()
 
-        verified[
-            "verification_status"
-        ] = "VERIFIED"
+        verified["verification_status"] = "HUMAN_REVIEW_REQUIRED"
+        verified["reference_match_status"] = "REFERENCE_MATCHED"
+        verified["legal_currency_verified"] = False
 
         validated.append(
             verified
@@ -577,17 +577,7 @@ def validate_generated_draft(
 
         "legal_validation": {
             "status": (
-                "VERIFIED"
-                if (
-                    verified_sources
-                    and not unverified_references
-                    and not agent_requires_review
-                )
-                else (
-                    "PARTIALLY_VERIFIED"
-                    if verified_sources
-                    else "NOT_VERIFIED"
-                )
+                "NOT_VERIFIED"
             ),
             "verified_sources": len(
                 verified_sources
@@ -595,5 +585,9 @@ def validate_generated_draft(
             "rejected_references": len(
                 unverified_references
             ),
+            "legal_currency_verified": False,
+            "human_review_required": True,
+            "matched_reference_count": len(verified_sources),
+            "legally_verified_source_count": 0,
         },
     }

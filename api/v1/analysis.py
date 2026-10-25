@@ -31,49 +31,39 @@ router = APIRouter(
 
 def get_valid_points(
     ai_analysis: dict[str, Any],
+    document_text: str = "",
 ) -> list[dict[str, Any]]:
-    """
-    Safely extract document points
-    returned by the AI.
-    """
+    """Accept only AI points with quotes grounded in the source document."""
+    import re
 
-    raw_points: Any = ai_analysis.get(
-        "points",
-        [],
-    )
-
-    if not isinstance(
-        raw_points,
-        list,
-    ):
+    raw_points = ai_analysis.get("points", [])
+    if not isinstance(raw_points, list):
         return []
 
-    typed_points = cast(
-        list[Any],
-        raw_points,
-    )
+    def normalized(value: str) -> str:
+        return re.sub(r"\s+", " ", value).strip().casefold()
 
-    points: list[
-        dict[str, Any]
-    ] = []
+    source = normalized(document_text)
+    if not source:
+        return []
 
-    for raw_point in typed_points:
-        if not isinstance(
-            raw_point,
-            dict,
-        ):
+    verified = []
+
+    for raw_point in raw_points:
+        if not isinstance(raw_point, dict):
             continue
 
-        point = cast(
-            dict[str, Any],
-            raw_point,
-        )
+        quote = raw_point.get("original_text")
+        if not isinstance(quote, str) or not quote.strip():
+            continue
 
-        points.append(
-            point
-        )
+        if normalized(quote) not in source:
+            continue
 
-    return points
+        verified.append(raw_point)
+
+    return verified
+
 
 
 @router.post("/document")
@@ -185,7 +175,8 @@ async def analyze_document(
         )
 
         points = get_valid_points(
-            ai_analysis
+            ai_analysis,
+            document_text=result["text"],
         )
 
         print(
@@ -193,6 +184,48 @@ async def analyze_document(
             len(points),
             flush=True,
         )
+
+        raw_points = ai_analysis.get("points", [])
+        extracted_count = (
+            len(raw_points)
+            if isinstance(raw_points, list)
+            else 0
+        )
+        verified_count = len(points)
+        rejected_count = max(0, extracted_count - verified_count)
+
+        if verified_count == 0:
+            extraction_status = "NO_VERIFIED_POINTS"
+        elif rejected_count:
+            extraction_status = "PARTIAL_REVIEW_REQUIRED"
+        else:
+            extraction_status = "QUOTES_MATCHED"
+
+        extraction_review = {
+            "status": extraction_status,
+            "extracted_points": extracted_count,
+            "verified_points": verified_count,
+            "rejected_points": rejected_count,
+            "complete_analysis_verified": False,
+            "human_review_required": True,
+            "message": (
+                "No AI-extracted quotations could be matched "
+                "to the uploaded document."
+                if verified_count == 0
+                else (
+                    "Some AI-extracted quotations could not be "
+                    "matched to the uploaded document. "
+                    "The legal analysis may be incomplete."
+                    if rejected_count
+                    else (
+                        "All returned quotations matched the "
+                        "extracted document text. This does not "
+                        "prove every clause was extracted."
+                    )
+                )
+            ),
+        }
+
 
         for index, point in enumerate(
             points,
@@ -377,6 +410,7 @@ async def analyze_document(
                 ],
             },
             "analysis": ai_analysis,
+            "extraction_review": extraction_review,
             "legal_research_review": legal_research_review,
             "legal_analysis": (
                 legal_analysis

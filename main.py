@@ -54,6 +54,37 @@ def create_application() -> FastAPI:
         legal_research.router
     )
 
+
+    # Compatibility fallback for environments where
+    # FastAPI include_router does not register routes.
+    from fastapi.routing import APIRoute
+
+    registered_paths = {
+        (route.path, tuple(sorted(route.methods or [])))
+        for route in application.routes
+        if isinstance(route, APIRoute)
+    }
+
+    for source_router in (
+        upload.router,
+        analysis.router,
+        design_analysis.router,
+        draft.router,
+        legal_research.router,
+    ):
+        for route in source_router.routes:
+            if not isinstance(route, APIRoute):
+                continue
+
+            route_key = (
+                route.path,
+                tuple(sorted(route.methods or [])),
+            )
+
+            if route_key not in registered_paths:
+                application.router.routes.append(route)
+                registered_paths.add(route_key)
+
     return application
 
 

@@ -440,6 +440,7 @@ def build_test_section_content(
     section_title: str,
     details: dict[str, Any],
     topic_requirements: list[dict[str, Any]],
+    draft_type: str = '',
 ) -> list[str]:
     """
     Build deterministic Test Mode content.
@@ -452,7 +453,41 @@ def build_test_section_content(
 
     lines: list[str] = []
 
-    if section_key == "parties":
+    if draft_type == "offer_letter" and section_key == "offer":
+        employer = get_detail(details, "employer_name")
+        employee = get_detail(details, "employee_name")
+
+        lines.append(
+            f"{employer} offers employment to {employee}, "
+            "subject to the terms stated in this offer letter "
+            "and the final employment documentation."
+        )
+
+    elif draft_type == "offer_letter" and section_key == "position":
+        job_title = get_detail(details, "job_title")
+
+        lines.append(
+            f"The offered position is {job_title}."
+        )
+
+        lines.append(
+            "The duties and reporting arrangements should "
+            "be confirmed in the final employment documentation."
+        )
+
+    elif draft_type == "offer_letter" and section_key == "start_date":
+        start_date = get_detail(details, "start_date")
+
+        lines.append(
+            f"The proposed employment start date is {start_date}."
+        )
+
+        lines.append(
+            "Any change to the proposed start date should "
+            "be confirmed in writing by the parties."
+        )
+
+    elif section_key == "parties":
         employer = get_detail(
             details,
             "employer_name",
@@ -636,19 +671,60 @@ def build_test_section_content(
         "signatures",
         "signature",
     }:
-        lines.extend(
-            [
-                "Employer:",
-                "Name: __________________________",
-                "Signature: ____________________",
-                "Date: __________________________",
-                "",
-                "Employee / Other Party:",
-                "Name: __________________________",
-                "Signature: ____________________",
-                "Date: __________________________",
+        if draft_type == "employment_contract":
+            parties = [
+                ("Employer", details.get("employer_name", "")),
+                ("Employee", details.get("employee_name", "")),
             ]
-        )
+        elif draft_type in {"nda", "service_agreement"}:
+            parties = [
+                ("First Party", details.get("first_party", "")),
+                ("Second Party", details.get("second_party", "")),
+            ]
+        else:
+            parties = []
+
+        for index, (label, name) in enumerate(parties):
+            if index:
+                lines.append("")
+
+            lines.extend(
+                [
+                    f"{label}:",
+                    f"Name: {str(name).strip() or '____________________'}",
+                    "Signature: ____________________",
+                    "Date: ________________________",
+                ]
+            )
+
+    elif section_key == "acceptance":
+        if draft_type == "offer_letter":
+            lines.extend(
+                [
+                    "Employee Acceptance:",
+                    "Name: " + str(
+                        details.get("employee_name", "")
+                    ).strip(),
+                    "Signature: ____________________",
+                    "Date: ________________________",
+                ]
+            )
+
+    elif section_key == "acknowledgement":
+        if draft_type == "warning_letter":
+            lines.extend(
+                [
+                    "Employee Acknowledgement of Receipt:",
+                    "Name: " + str(
+                        details.get("employee_name", "")
+                    ).strip(),
+                    "Signature: ____________________",
+                    "Date: ________________________",
+                    "Acknowledgement confirms receipt only; "
+                    "it does not necessarily indicate agreement "
+                    "with the contents.",
+                ]
+            )
 
     else:
         lines.append(
@@ -803,6 +879,7 @@ def get_test_draft(
 
             section_lines = (
                 build_test_section_content(
+                    draft_type=draft_type,
                     section_key=section_key,
                     section_title=section_title,
                     details=details,
